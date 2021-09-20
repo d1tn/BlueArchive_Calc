@@ -12,7 +12,7 @@
   {% for stuId, stuName in chars %}
   <div class="charBox chosenChars">
   <div class="charBoxwrap">
-  <img src="../../static/stuIcons/stuIcon_{{ stuId }}.png" alt="{{ itemName }}">
+    <img src = "{% static '/stuIcons/stuIcon_' %}{{ stuId }}.png" alt="{{ itemName }}">
   <p class="charNameBar">{{ stuName }}</p>
   </div>
   </div>
@@ -29,7 +29,7 @@
   {% for itemId, itemName, itemQuantity ,sortId in result%}
   <div class="itemBox">
   <div class="itemBoxFrame"></div>
-  <img src="../../static/itemIcons/{{ itemId }}.png" alt="{{ itemName }}">
+  <img src="{% static '/itemIcons/' %}{{ itemId }}.png" alt="{{ itemName }}">
   <p class="itemQuantity itemBar"><span>×</span>{{ itemQuantity|value1000nTo1k }}
   </p>
   </div>
