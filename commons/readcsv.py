@@ -32,7 +32,7 @@ ratio = pd.DataFrame(pd.read_csv(csvFolder + "Exp/00_Ratio.csv", encoding="utf-8
 charLv = pd.DataFrame(pd.read_csv(csvFolder + "Exp/01_CharLv.csv", encoding="utf-8"))
 eqLv = pd.DataFrame(pd.read_csv(csvFolder + "Exp/02_EqLv.csv", encoding="utf-8")).astype('int',errors='ignore')
 exLv = pd.DataFrame(pd.read_csv(csvFolder + "Exp/03_ExLv.csv", encoding="utf-8"))
-sklLv = pd.DataFrame(pd.read_csv(csvFolder + "Exp/04_Skilllv.csv", encoding="utf-8"))
+sklLv = pd.DataFrame(pd.read_csv(csvFolder + "Exp/04_SkillLv.csv", encoding="utf-8"))
 
 
 ###入力フォーム用数値作成
