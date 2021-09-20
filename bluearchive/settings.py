@@ -26,8 +26,6 @@ SECRET_KEY = 'django-insecure-iru&xfr%asa^2b$&^75@-uo#akipd5&w$9e33fo7+lhb1^y(3^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -140,4 +138,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # NUMBER_GROUPING = 3
 
 # ホストネーム
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['*']
