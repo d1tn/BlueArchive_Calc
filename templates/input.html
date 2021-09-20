@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for i in msg %}
+<p class="errormsg">{{ i }}</p>
+  {% endfor %}
+
+
+<div class="container">
+
+<div class="tableWrap">
+  <h2 class="heading">育成状況の入力</h2>
+
+<form action="calc">
+<table class="input">
+  <tr>
+  <th colspan="2">キャラ名</th>
+  {% for th in ths %}<th colspan="1">{{ th }}Lv</th>
+  {% endfor %}</tr>
+  {% for charInputs, charNames in charDatas %}
+  <tr class="trTop">
+    <td rowspan="2">
+      <div class="charBoxwrap">
+      <input type="hidden" name="input" value="{{ charInputs.0 }}"/>
+      <img src = "../../static/stuIcons/stuIcon_{{ charInputs.0 }}.png">
+      <p class="charNameBar">{{ charNames }}</p>
+      </div>
+    </td>
+
+    <td>現在</td><td class="inputTd"><input type="number" name="input" maxlength="2", max="{{ max_min.0.0 }}" min="{{ max_min.0.1 }}" required="required" value="{{ charInputs.1 }}"/></td>
+    <td class="inputTd Eqs"><select name="input">{% for i in eqLv_List %}<option value="{{ i.0 }}"{% if i.0 == inputs.2 %} selected {% endif %}>{{ i.1 }}</option>{% endfor %}</select></td>
+    <td class="inputTd Eqs"><select name="input">{% for i in eqLv_List %}<option value="{{ i.0 }}"{% if i.0 == inputs.3 %} selected {% endif %}>{{ i.1 }}</option>{% endfor %}</select></td>
+    <td class="inputTd Eqs"><select name="input">{% for i in eqLv_List %}<option value="{{ i.0 }}"{% if i.0 == inputs.4 %} selected {% endif %}>{{ i.1 }}</option>{% endfor %}</select></td>
+    <td class="inputTd"><input type="number" name="input" maxlength="2" max="{{ max_min.1.0 }}" min="{{ max_min.1.1 }}" required="required"  value="{{ charInputs.5 }}"/></td>
+    <td class="inputTd"><input type="number" name="input" maxlength="2" max="{{ max_min.2.0 }}" min="{{ max_min.2.1 }}" required="required"  value="{{ charInputs.6 }}"/></td>
+    <td class="inputTd"><input type="number" name="input" maxlength="2" max="{{ max_min.2.0 }}" min="{{ max_min.2.1 }}" required="required"  value="{{ charInputs.7 }}"/></td>
+    <td class="inputTd"><input type="number" name="input" maxlength="2" max="{{ max_min.2.0 }}" min="{{ max_min.2.1 }}" required="required" value="{{ charInputs.8 }}"/></td>
+  </tr>
+  <tr class="trBtm">
+    <td>目標</td><td class="inputTd"><input type="number" name="input" maxlength="2" max="{{ max_min.0.0 }}" min="{{ max_min.0.1 }}" required="required" value="{{ charInputs.9 }}"/></td>
+    <td class="inputTd Eqs"><select name="input">{% for i in eqLv_List %}<option value="{{ i.0 }}"{% if i.0 == inputs.9 %} selected {% endif %}>{{ i.1 }}</option>{% endfor %}</select></td>
+    <td class="inputTd Eqs"><select name="input">{% for i in eqLv_List %}<option value="{{ i.0 }}"{% if i.0 == inputs.10 %} selected{% endif %}>{{ i.1 }}</option>{% endfor %}</select></td>
+    <td class="inputTd Eqs"><select name="input">{% for i in eqLv_List %}<option value="{{ i.0 }}"{% if i.0 == inputs.11 %} selected {% endif %}>{{ i.1 }}</option>{% endfor %}</select></td>
+    <td class="inputTd"><input type="number" name="input" maxlength="2" max="{{ max_min.1.0 }}" min="{{ max_min.1.1 }}" required="required" value="{{ charInputs.13 }}"/></td>
+    <td class="inputTd"><input type="number" name="input" maxlength="2" max="{{ max_min.2.0 }}" min="{{ max_min.2.1 }}" required="required" value="{{ charInputs.14 }}"></td>
+    <td class="inputTd"><input type="number" name="input" maxlength="2" max="{{ max_min.2.0 }}" min="{{ max_min.2.1 }}" required="required" value="{{ charInputs.15 }}"/></td>
+    <td class="inputTd"><input type="number" name="input" maxlength="2" max="{{ max_min.2.0 }}" min="{{ max_min.2.1 }}" required="required" value="{{ charInputs.16 }}"/></td>
+    <input type="hidden" name="input" value="{{ charInputs.17 }}">
+  </tr>
+  {% endfor %}
+</table>
+  <input type="submit" class="Btn guide yellow" value="計算する">
+</form>
+</div>
+</div>
+{% endblock %}

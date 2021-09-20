@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+<div class="boxes-container">
+{% for headings, texts in txts %}
+<div class="boxArea">
+<h2 class="heading">{{ headings }}</h2>
+<div class="boxAreaWrap">
+  <p>{{ texts | linebreaksbr  }}</p>
+</div>
+</div>
+{% endfor %}
+<a href="../" class="Btn  blue">トップへ戻る</a>
+</div>
+</div>
+</div>
+{% endblock %}

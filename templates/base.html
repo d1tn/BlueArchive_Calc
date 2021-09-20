@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="description" content="Yostar社提供のスマホゲーム「ブルーアーカイブ（ブルアカ）」の、育成素材必要数計算ツールです。（非公式）">
+<meta name="keywords" content="ブルーアーカイブ,ブルアカ,攻略,育成,素材,育成素材">
+<link rel='stylesheet' href='static/css/style.css'>
+<script src="https://kit.fontawesome.com/06fc159213.js" crossorigin="anonymous"></script>
+
+<title>ブルーアーカイブ（ブルアカ）育成マスター</title>
+</head>
+<body>
+<div class="header">
+  <div class="container">
+    <h1 class="siteName"><a href="../">ブルアカ育成マスター</a></h1>
+    <p class="copy">必要素材を一括計算</p>
+  </div>
+</div>
+{% block content %}{% endblock %}
+
+
+{% if guide_msg != "" %}
+<div class="guidespace"></div>
+<div class="guidemsg">
+  <h3>Guide</h3>
+  <p>{{ guide_msg | linebreaksbr }}</p>
+</div>
+{% endif %}
+
+<label for="menuOnOff">
+  <span class="menubtn">
+  <i class="fas fa-bars"></i>
+</span>
+</label>
+
+<input type="checkbox" id="menuOnOff">
+<div class="menuBar">
+  <ul class="menu">
+    <li><a href="./"><i class="fas fa-calculator"></i>Calculate</a></li>
+    <li><a href="./howto"><i class="far fa-lightbulb"></i>How To</a></li>
+    <li><a href="./about"><i class="far fa-question-circle"></i>About</a></li>
+    <li><a href="https://twitter.com/intent/tweet?text=%23ブルアカ育成マスター で育成素材を計算しよう！%0A%23ブルアカ%0Ahttps%3A%2F%2Fbluearchive-calculator.com%2F"><i class="fab fa-twitter"></i>Share</a></li>
+    <li><a href="https://twitter.com/messages/compose?recipient_id=1438494596707729416"><i class="far fa-envelope"></i>Contact</a></li>
+  </ul>
+</div>
+
+</body>
+</html>

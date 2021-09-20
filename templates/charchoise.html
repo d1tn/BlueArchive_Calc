@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<form action="input" method="get" >
+<div class="container">
+  <div class="boxes-container">
+  <h2 class="heading">育成する生徒を選択</h2>
+<p>{{msg}}</p>
+    <div class="boxArea chars">
+    <h3 class="heading">生徒一覧</h3>
+      <div class="boxAreaWrap">
+      {% for charId, charName in chars %}
+      <div class="charBox">
+        <div class="charBoxwrap">
+          <label>
+          <input type="checkbox" name="char" class="charCheckBox" value="{{ charId }}">
+          <div class="forchk">選択中
+          </div>
+
+          <img src = "../../static/stuIcons/stuIcon_{{ charId }}.png">
+          <p class="charNameBar">{{ charName }}</p>
+          </label>
+        </div>
+      </div>
+
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<input type="submit" class="Btn guide blue" value="次へ">
+</form>
+{% endblock %}

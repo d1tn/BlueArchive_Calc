@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load tempFunc %}
+{% block content %}
+
+<div class="container">
+<div class="boxes-container">
+  <h2 class="heading">計算結果</h2>
+  <div class="boxArea chars result">
+    <h3 class="heading">選択した生徒</h3>
+    <div class="boxAreaWrap">
+  {% for stuId, stuName in chars %}
+  <div class="charBox chosenChars">
+  <div class="charBoxwrap">
+  <img src="../../static/stuIcons/stuIcon_{{ stuId }}.png" alt="{{ itemName }}">
+  <p class="charNameBar">{{ stuName }}</p>
+  </div>
+  </div>
+  {% endfor %}
+  </div>
+</div>
+
+
+  <div class="boxArea items result">
+    <h3 class="heading">必要なアイテム</h3>
+    <div class="boxAreaWrap">
+      {{msg.0.0}}
+
+  {% for itemId, itemName, itemQuantity ,sortId in result%}
+  <div class="itemBox">
+  <div class="itemBoxFrame"></div>
+  <img src="../../static/itemIcons/{{ itemId }}.png" alt="{{ itemName }}">
+  <p class="itemQuantity itemBar"><span>×</span>{{ itemQuantity|value1000nTo1k }}
+  </p>
+  </div>
+  {% endfor %}
+  </div>
+  </div>
+
+  <a href="../" class="Btn  blue">もう一度計算する</a>
+
+
+</div>
+</div>
+{{output}}
+
+{% endblock %}
