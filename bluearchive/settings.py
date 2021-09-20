@@ -142,5 +142,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # ホストネーム
 ALLOWED_HOSTS = ['*']
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = '/usr/share/nginx/html/media'
+# 静的ファイル？
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = (os.path.join(BASE_DIR, 'media'),
+#      '/var/www/media/',
+# )
