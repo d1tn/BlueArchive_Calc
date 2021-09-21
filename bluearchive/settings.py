@@ -24,8 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-iru&xfr%asa^2b$&^75@-uo#akipd5&w$9e33fo7+lhb1^y(3^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-# DEBUG = True
+# DEBUG = False
+DEBUG = True
 
 
 # Application definition
@@ -122,13 +122,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = (os.path.join(BASE_DIR, 'static'),
-     '/var/www/static/',
-)
+# 本番環境の静的ファイル格納ディレクトリ
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+#開発環境用　共通静的ファイル格納ディレクトリ
+# 最後にSTATIC_ROOTにコピーされる
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-    '/var/www/static/',
+    os.path.join(BASE_DIR, 'static_debug'),
+    # '/var/www/static/',
 )
 
 # Default primary key field type
