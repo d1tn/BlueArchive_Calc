@@ -123,13 +123,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # 本番環境の静的ファイル格納ディレクトリ
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = '/var/www/static/'
 
 #開発環境用　共通静的ファイル格納ディレクトリ
 # 最後にSTATIC_ROOTにコピーされる
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static_debug'),
-    # '/var/www/static/',
+    os.path.join(BASE_DIR, 'static'),
 )
 
 # Default primary key field type
