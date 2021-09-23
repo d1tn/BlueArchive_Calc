@@ -23,9 +23,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-iru&xfr%asa^2b$&^75@-uo#akipd5&w$9e33fo7+lhb1^y(3^'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-# DEBUG = True
 
 
 # Application definition
@@ -119,12 +116,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
+# 本番環境の静的ファイル格納ディレクトリ
+STATIC_ROOT = (
+os.path.join(BASE_DIR, 'static'),
+'/var/www/static/',
+)
 
 STATIC_URL = '/static/'
-
-# 本番環境の静的ファイル格納ディレクトリ
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# STATIC_ROOT = '/var/www/static/'
 
 #開発環境用　共通静的ファイル格納ディレクトリ
 # 最後にSTATIC_ROOTにコピーされる
@@ -146,3 +144,7 @@ ALLOWED_HOSTS = ['*']
 # MEDIA_ROOT = (os.path.join(BASE_DIR, 'media'),
 #      '/var/www/media/',
 # )
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+# DEBUG = True
