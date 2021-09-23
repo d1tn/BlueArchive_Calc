@@ -135,7 +135,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # 通信を許可するホストネーム
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '13.208.115.228']
+# ALLOWED_HOSTS = ['*']
 
 # 静的ファイル
 # MEDIA_URL = '/media/'
