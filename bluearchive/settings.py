@@ -28,14 +28,19 @@ SECRET_KEY = 'django-insecure-iru&xfr%asa^2b$&^75@-uo#akipd5&w$9e33fo7+lhb1^y(3^
 # Application definition
 
 INSTALLED_APPS = [
-    'calc.apps.CalcConfig',
+    'calc.apps.CalcConfig', # 追加 自作
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites', # 追加 サイトマップ作成用
+    'django.contrib.sitemaps', # 追加 サイトマップ作成用
 ]
+
+# 追加 サイトマップ作成用
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
