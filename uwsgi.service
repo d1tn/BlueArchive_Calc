@@ -1,0 +1,15 @@
+[Unit]
+Description = uWSGI
+After = syslog.target
+
+[Service]
+ExecStart=/home/ec2-user/.local/bin/uwsgi --ini /home/ec2-user/BlueArchive_Calc/uwsgi.ini
+Restart=always
+RuntimeDirectory=uwsgi
+KillSignal=SIGQUIT
+Type=notify
+StandardError=syslog
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target
