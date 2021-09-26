@@ -228,6 +228,7 @@ def calc(request):
         if datas[i][0]  in stuIds:
             tmp.append(datas[i])
         else:
+            pass
             # print('\nOut-of-range stuId was deleted :',datas[i][0])
     datas = tmp
     # 入力データだけでなく個人データの検証も必要なため、
@@ -238,6 +239,7 @@ def calc(request):
         request.session['yourCharData'] = datas
         # print('\nYour data was saved!! :')
         for i in request.session['yourCharData']:
+            pass
             # print(i)
 
 
