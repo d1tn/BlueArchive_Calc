@@ -210,14 +210,14 @@ label{
   padding: 0;
   text-align: right;
   line-height:min(1.5vw,1.5rem);
-  font-size:2vw;
+  font-size: max(2vw,0.6rem);
   font-weight: bold;
   word-break: break-word;
   z-index: 3;
   text-shadow: 0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff;
 }
 .itemBar span{
-  font-size: 1vw;
+  font-size: max(1vw,0.3rem);
 }
 
 .itemBox img{
