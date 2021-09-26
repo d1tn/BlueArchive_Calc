@@ -160,10 +160,10 @@ def runCalc(stuNo, stuLv_from, eq1Lv_from, eq2Lv_from, eq3Lv_from, exLv_from, ns
         result.extend(getSsItems(stuNo,"ノーマルスキル",nsLv_from,nsLv_to))
         result.extend(getSsItems(stuNo,"パッシブスキル",psLv_from,psLv_to))
         result.extend(getSsItems(stuNo,"サブスキル",ssLv_from,ssLv_to))
-        print('StuId',stuNo,": calculation ok")
+        # print('StuId',stuNo,": calculation ok")
         return result
     else:
-        print('StuId',stuNo,": calculation skipped")
+        # print('StuId',stuNo,": calculation skipped")
         return []
 
 # 数字or空白のみの多次元配列を数値型=>文字列型に変換
@@ -210,11 +210,12 @@ def InputToArray(input):
 def ValidateInMinToMax(stuNo, stuLv_from, eq1Lv_from, eq2Lv_from, eq3Lv_from, exLv_from, nsLv_from, psLv_from, ssLv_from, stuLv_to, eq1Lv_to, eq2Lv_to, eq3Lv_to, exLv_to, nsLv_to, psLv_to, ssLv_to, DoOrNot):
     if DoOrNot == 1 :
         if stuLv_from in range(1, charLv_max +1) and exLv_from in range(exLv_min, exLv_max +1) and eq1Lv_from in range(eqLv_min, eqLv_max +1) and eq2Lv_from in range(eqLv_min, eqLv_max +1) and eq3Lv_from in range(eqLv_min, eqLv_max +1) and nsLv_from in range(sklLv_min, sklLv_max +1) and psLv_from in range(sklLv_min, sklLv_max +1) and ssLv_from in range(sklLv_min, sklLv_max +1) and stuLv_to in range(1, charLv_max +1) and exLv_to in range(exLv_min, exLv_max +1) and eq1Lv_to in range(eqLv_min, eqLv_max +1) and eq2Lv_to in range(eqLv_min, eqLv_max +1) and eq3Lv_to in range(eqLv_min, eqLv_max +1) and nsLv_to in range(sklLv_min, sklLv_max +1) and psLv_to in range(sklLv_min, sklLv_max +1) and ssLv_to in range(sklLv_min, sklLv_max +1):
-            print('StuId',stuNo,": min_to_max validation ok")
+            # print('StuId',stuNo,": min_to_max validation ok")
             return []
         else:
-            print('StuId',stuNo,": min_to_max validation ERROR!!")
+            # print('StuId',stuNo,": min_to_max validation ERROR!!")
             return ['範囲外の数値が入力されています。']
 
     else:
-        print('StuId',stuNo,": min_to_max validation skipped")
+        pass
+        # print('StuId',stuNo,": min_to_max validation skipped")
