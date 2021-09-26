@@ -16,7 +16,7 @@ def delSession(request):
     temp_name = "charchoise.html"
     del request.session['yourCharData']
     del request.session['inputs']
-    print('your sessions were deleted.')
+    # print('your sessions were deleted.')
     return render(request,temp_name)
 
 
@@ -27,7 +27,7 @@ def charchoise(request):
     # セッション削除
     # del request.session['yourCharData']
     # del request.session['inputs']
-    # print('your sessions were deleted.')
+    # # print('your sessions were deleted.')
 
     temp_name = "charchoise.html"
     guide_msg = '強化する生徒を選んでください。\n選び終わったら、「次へ」を押してください。'
@@ -51,7 +51,7 @@ def charchoise(request):
 
 # ２．育成状況・育成目標入力画面
 def input(request):
-    print('\n\n▼ Input Page ▼')
+    # print('\n\n▼ Input Page ▼')
     temp_name = "input.html"
     guide_msg = '生徒の育成度合いについて、現時点の数値と育成目標を入力してください。\n入力が終わったら「計算する」を押してください。'
 
@@ -59,18 +59,18 @@ def input(request):
     # 入力済みデータが存在する場合はそちらから読み込む
     try:
         request.session['yourCharData']
-        print('yourCharData:',request.session['yourCharData'])
+        # print('yourCharData:',request.session['yourCharData'])
         if request.session['yourCharData'] !=[]:
-            print('your data is exist!')
+            # print('your data is exist!')
             inputs = request.session['yourCharData']
         else:
-            print('your data is not exist 1')
+            # print('your data is not exist 1')
             inputs = request.session['inputs']
             request.session['yourCharData'] =inputs
 
     except:
         # セッション変数から初期値の受取
-        print('your data is not exist 2')
+        # print('your data is not exist 2')
         inputs = request.session['inputs']
         request.session['yourCharData'] =inputs
 
@@ -80,7 +80,7 @@ def input(request):
     #入力済みデータにいないキャラが追加されていた場合は初期値を追加
     for i in range(len(charId)):
         if charId[i] not in [input[0] for input in inputs]:
-            print('New stuID:',charId[i])
+            # print('New stuID:',charId[i])
             inputs.append([int(charId[i]),1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0])
 
 
@@ -100,12 +100,12 @@ def input(request):
             # 文字列変換用
             #クエリから来たキャラIDを元にキャラ名を検索
             charNames.append(stuData.loc[stuData["Stu_Id"] == int(charIds[j])]["Stu_Name"].item())
-    print('charInputs:',charInputs)
+    # print('charInputs:',charInputs)
     # # セッション変数を更新
     # request.session['inputs'] = inputs
     #テンプレートに投げる為に一時的に文字列に変換
     IntToStr(charInputs)
-    print('charInputs:',charInputs)
+    # print('charInputs:',charInputs)
 
     ths = ['キャラ','装備1','装備2','装備3','EXスキル','ノーマルスキル','パッシブスキル','サブスキル']
     context = {
@@ -123,7 +123,7 @@ def input(request):
 
 # ３．計算
 def calc(request):
-    print('\n\n▼ Result Page ▼')
+    # print('\n\n▼ Result Page ▼')
     guide_msg =''
     result = []
     input = request.GET.getlist('input', None)
@@ -148,7 +148,7 @@ def calc(request):
 
     # エラーが発生（エラーメッセージがある）した場合は処理をせずエラーメッセージを返す
     if msg != [] and msg != '':
-        print('An error has occured : ',msg)
+        # print('An error has occured : ',msg)
         return render(request,'input.html',
         {'msg':msg,
         'input':input}
@@ -205,20 +205,20 @@ def calc(request):
 
     if datas != []:
         for i in range(len(inputs)):
-            print('\nstuId:',inputs[i][0])
+            # print('\nstuId:',inputs[i][0])
             if inputs[i][0] in [d[0] for d in datas]:
-                print('This stuId is already exist.:',datas[[d[0] for d in datas].index(inputs[i][0])])
+                # print('This stuId is already exist.:',datas[[d[0] for d in datas].index(inputs[i][0])])
                 datas[[d[0] for d in datas].index(inputs[i][0])] = inputs[i]
-                print('A data was rewrited. :', datas[[d[0] for d in datas].index(inputs[i][0])])
+                # print('A data was rewrited. :', datas[[d[0] for d in datas].index(inputs[i][0])])
                 continue
             else:
-                print('This stuId is new')
-                print(inputs[i])
+                # print('This stuId is new')
+                # print(inputs[i])
                 datas.append(inputs[i])
-                print('A new data was appended.:',[d[0] for d in datas])
+                # print('A new data was appended.:',[d[0] for d in datas])
                 continue
     else:
-        print('Your data is not exist yet.')
+        # print('Your data is not exist yet.')
         for input in inputs:
             datas.append(input)
 
@@ -228,7 +228,7 @@ def calc(request):
         if datas[i][0]  in stuIds:
             tmp.append(datas[i])
         else:
-            print('\nOut-of-range stuId was deleted :',datas[i][0])
+            # print('\nOut-of-range stuId was deleted :',datas[i][0])
     datas = tmp
     # 入力データだけでなく個人データの検証も必要なため、
     # 入力がすべて終了した個人データに対して検証を行う
@@ -236,9 +236,9 @@ def calc(request):
     # 個人の入力データをセッションIDに保存
     if request.session['yourCharData'] !=[]:
         request.session['yourCharData'] = datas
-        print('\nYour data was saved!! :')
+        # print('\nYour data was saved!! :')
         for i in request.session['yourCharData']:
-            print(i)
+            # print(i)
 
 
 

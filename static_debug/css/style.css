@@ -217,7 +217,7 @@ label{
   text-shadow: 0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff;
 }
 .itemBar span{
-  font-size: max(1vw,0.3rem);
+  font-size: max(1.5vw,0.4rem);
 }
 
 .itemBox img{
