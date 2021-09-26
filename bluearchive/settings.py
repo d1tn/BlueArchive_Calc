@@ -68,6 +68,9 @@ TEMPLATES = [
     },
 ]
 
+#GoogleAnalytics情報追加
+GOOGLE_ANALYTICS_TRACKING_ID='G-WKJ89BP809'
+
 WSGI_APPLICATION = 'bluearchive.wsgi.application'
 
 
