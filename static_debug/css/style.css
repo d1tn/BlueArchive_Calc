@@ -244,7 +244,7 @@ table.input th{
   background-color: var(--color-blue-1);
   border-radius: 5px;
   line-height: 2.2vw;
-  font-size: 1vw;
+  font-size: max(1vw,0.6rem);
   position: sticky;
   top: 4.0rem;
   z-index: 6;
