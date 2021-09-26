@@ -35,12 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites', # 追加 サイトマップ作成用
-    'django.contrib.sitemaps', # 追加 サイトマップ作成用
 ]
 
-# 追加 サイトマップ作成用
-SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
