@@ -1,0 +1,18 @@
+[Unit]
+Description = uWSGI
+After = syslog.target
+
+[Service]
+ExecStartPre=/usr/bin/cd /var/www/uwsgi/
+ExecStart=/home/ec2-user/.local/bin/uwsgi --ini /var/www/uwsgi/app.ini
+ExecStop=/bin/kill -INT ${MAINPID}
+Restart=always
+RuntimeDirectory=uwsgi
+KillSignal=SIGQUIT
+Type=notify
+StandardError=syslog
+NotifyAccess=all
+WorkingDirectory=/var/www/uwsgi/
+
+[Install]
+WantedBy=multi-user.target
