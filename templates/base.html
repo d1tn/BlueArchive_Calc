@@ -8,6 +8,9 @@
 <meta name="keywords" content="ブルーアーカイブ,ブルアカ,攻略,育成,素材,育成素材">
 <link rel="icon" href="{% static 'imgs/favicon.ico' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% if GOOGLE_ANALYTICS_TRACKING_ID %}
+  {% include 'ga.html' %}
+{% endif %}
 <script src="https://kit.fontawesome.com/06fc159213.js" crossorigin="anonymous"></script>
 
 <title>ブルーアーカイブ（ブルアカ）育成マスター</title>
