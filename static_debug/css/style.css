@@ -264,7 +264,7 @@ td > div.charBoxwrap{
 
 td .charNameBar{
   line-height: 2vw;
-  font-size: 1vw;
+  font-size: max(1vw,0.6rem);
 }
 
 table.input{
@@ -285,7 +285,7 @@ table input{
 
 table .Eqs select{
   border: 1px solid #ddd;
-  font-size: 0.6rem;
+  font-size: max(1vw,0.6rem);
   height: 1.5rem;
   border-radius: 3px;
 }
