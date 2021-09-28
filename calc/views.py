@@ -247,17 +247,21 @@ def calc(request):
     temp_name = "result.html"
     return render(request,temp_name,context)
 
+
+########################################
+#　　　　　　テキスト表示ページ
+########################################
 # ４．使い方・概要ページ
 def howto(request):
     temp_name = "contents.html"
-    headings = ['本ツールについて','使い方','計算される数値について']
-    texts = [
-    'Yostar社提供のスマホゲーム「ブルーアーカイブ（ブルアカ）」の、非公式キャラクター育成支援ツールです。\n\nブルアカは育成素材の種別が多く、管理が大変なため、なんとか快適にできないか？と思い開発に至りました。\n\n日々のプレイの助けになれば幸いです。',
-    '育てたい生徒を選択し、生徒のレベルや装備、各種スキルについて、現在の値と、育成目標となる値を入力すると、素材の必要数が一括で計算・表示されます。\n\n本アプリで入力した数値は、お使いのブラウザのセッションIDに紐づけて保存されます。\n\n育成が進んだときなど、再度計算をやり直したい時に、以前の値を引き継いで使用することが可能です。',
-    '本ツールで使用する生徒パラメータについては、可能な限りゲーム内で実際に確認して正確な数値を把握するように務めておりますが、強化に必要となるオーパーツの数が生徒ごとに異なっており、一部の生徒について必要数が把握し切れておりません。\n\n必要数が未判明の生徒は、既に判明している生徒たちの必要数の平均値で計算する仕様とさせて頂いております。\n\nこのため、一部の生徒でオーパーツ数に誤差が生じる場合がございますが、あらかじめご了承ください。']
-
+    page = 'howto'
+    row = PagesTexts[PagesTexts['page'] == page]
+    title = [item for item in row['title']][0]
+    headings = [str(item[4]) for item in row.itertuples()]
+    texts = [str(item[5]) for item in row.itertuples()]
 
     context = {
+    'pagetitle':title,
     'txts':zip(headings, texts),
     'guide_msg':'',
     }
@@ -266,21 +270,95 @@ def howto(request):
 # ５．その他説明ページ
 def about(request):
     temp_name = "contents.html"
-    headings = [
-    '本ツールについて',
-    'リンクについて',
-    '免責事項',
-    '著作権について',
-    'お問い合わせ']
-    texts = [
-    'Yostar社提供のスマホゲーム「ブルーアーカイブ（ブルアカ）」の、非公式キャラクター育成支援ツールです。\n\nブルアカは育成素材の種別が多く、管理が大変なため、なんとか快適にできないか？と思い開発に至りました。\n\n日々のプレイの助けになれば幸いです。',
-    '当サイトはリンクフリー（許可や連絡は不要）です。\nSNSや動画投稿サイト等にて是非ご友人方へご紹介下さい。\n\nなお、画像等コンテンツへの直リンク行為はご遠慮願います。',
-    '当サイトで表示する一切の情報について、可能な限り正確な情報の掲載に努めておりますが、正確性を保証するものではございません。\n\n当サイトの利用に伴い、ユーザーに生じた損害については、一切の責任を負いかねます。あらかじめご了承ください。',
-    '当サイトは権利者様の権利侵害を目的としたものではございません。\n\nまた、当サイトでは、著作権法第32条（研究その他の引用の目的）に基づき画像の引用を行っております。\n\n著作権に関して問題がございましたら、権利者様からお問い合わせ下さい。速やかに対致します。',
-    '当サイトに関するお問い合わせはTwitterのDMにて受け付けております。\nお手数ですが、右上メニューボタンからアクセスして頂きますようお願い致します。']
+    page = 'about'
+    row = PagesTexts[PagesTexts['page'] == page]
+    title = [item for item in row['title']][0]
+    headings = [str(item[4]) for item in row.itertuples()]
+    texts = [str(item[5]) for item in row.itertuples()]
 
     context = {
+    'pagetitle':title,
     'txts':zip(headings, texts),
     'guide_msg':'',
     }
     return render(request,temp_name,context)
+
+# ６．プライバシーポリシー
+def privacypolicy(request):
+    temp_name = "contents.html"
+    page = 'privacypolicy'
+    row = PagesTexts[PagesTexts['page'] == page]
+    title = [item for item in row['title']][0]
+    headings = [str(item[4]) for item in row.itertuples()]
+    texts = [str(item[5]) for item in row.itertuples()]
+
+    context = {
+    'pagetitle':title,
+    'txts':zip(headings, texts),
+    'guide_msg':'',
+    }
+    return render(request,temp_name,context)
+
+#
+# # ４．使い方・概要ページ
+# def howto(request):
+#     temp_name = "contents.html"
+#     pagetitle = '本ツールの使い方'
+#     headings = ['使い方','計算される数値について']
+#     texts = [
+#     '育てたい生徒を選択し、生徒のレベルや装備、各種スキルについて、現在の値と、育成目標となる値を入力すると、素材の必要数が一括で計算・表示されます。\n\n本アプリで入力した数値は、お使いのブラウザのセッションIDに紐づけて保存されます。\n\n育成が進んだときなど、再度計算をやり直したい時に、以前の値を引き継いで使用することが可能です。',
+#     '本ツールで使用する生徒パラメータについては、可能な限りゲーム内で実際に確認して正確な数値を把握するように務めておりますが、強化に必要となるオーパーツの数が生徒ごとに異なっており、一部の生徒について必要数が把握し切れておりません。\n\n必要数が未判明の生徒は、既に判明している生徒たちの必要数の平均値で計算する仕様とさせて頂いております。\n\nこのため、一部の生徒でオーパーツ数に誤差が生じる場合がございますが、あらかじめご了承ください。']
+#
+#
+#     context = {
+#     'pagetitle':pagetitle,
+#     'txts':zip(headings, texts),
+#     'guide_msg':'',
+#     }
+#     return render(request,temp_name,context)
+#
+# # ５．その他説明ページ
+# def about(request):
+#     temp_name = "contents.html"
+#     pagetitle = '本ツールについて'
+#     headings = [
+#     '概要',
+#     'リンクについて',
+#     '免責事項',
+#     '著作権について',
+#     'お問い合わせ']
+#     texts = [
+#     'Yostar社提供のスマホゲーム「ブルーアーカイブ（ブルアカ）」の、非公式キャラクター育成支援ツールです。\nブルアカは育成素材の種別が多く管理も大変なため、なんとか快適にできないか？と思い開発に至りました。\n皆様の日々のプレイの助けになれば幸いです。',
+#     '当サイトはリンクフリー（掲載許可や連絡は不要）です。\nSNSや動画投稿サイト等にて是非ご友人方へご紹介下さい。\n\nなお、画像等コンテンツへの直リンク行為はご遠慮願います。',
+#     '当サイトで表示する一切の情報について、可能な限り正確な情報の掲載に努めておりますが、正確性を保証するものではございません。\n\nまた、当サイトの利用に伴いユーザーに生じた損害については、一切の責任を負いかねます。あらかじめご了承ください。',
+#     '当サイトは権利者様の権利侵害を目的としたものではございません。\nまた、当サイトでは、著作権法第32条（研究その他の引用の目的）に基づき画像の引用を行っております。\n\n著作権に関して問題がございましたら、権利者様からお問い合わせ下さい。速やかに対致します。',
+#     '当サイトに関するお問い合わせは<a href="https://forms.gle/HeBsiPisRznURhnj8">お問い合わせフォーム</a>、または<a href="https://twitter.com/messages/compose?recipient_id=1438494596707729416">TwitterのDM</a>にて受け付けております。']
+#
+#     context = {
+#     'pagetitle':pagetitle,
+#     'txts':zip(headings, texts),
+#     'guide_msg':'',
+#     }
+#     return render(request,temp_name,context)
+#
+# # ６．プライバシーポリシー
+# def privacypolicy(request):
+#     temp_name = "contents.html"
+#     pagetitle = 'プライバシーポリシー'
+#     headings = [
+#     '個人情報のお取り扱いについて',
+#     '広告について',
+#     'アクセス解析ツールについて',
+#     'お問い合わせ']
+#     texts = [
+#     '',
+#     '',
+#     '',
+#     '当サイトに関するお問い合わせは<a href="https://forms.gle/HeBsiPisRznURhnj8">お問い合わせフォーム</a>、または<a href="https://twitter.com/messages/compose?recipient_id=1438494596707729416">TwitterのDM</a>にて受け付けております。']
+#
+#     context = {
+#     'pagetitle':pagetitle,
+#     'txts':zip(headings, texts),
+#     'guide_msg':'',
+#     }
+#     return render(request,temp_name,context)

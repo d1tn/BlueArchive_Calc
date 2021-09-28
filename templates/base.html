@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <meta name="description" content="Yostar社提供のスマホゲーム「ブルーアーカイブ（ブルアカ）」の、育成素材必要数計算ツールです。（非公式）">
-<meta name="keywords" content="ブルーアーカイブ,ブルアカ,攻略,育成,素材,育成素材">
+<meta name="keywords" content="ブルーアーカイブ,ブルアカ,ブルアカ 攻略,ブルアカ  育成,ブルアカ 素材,ブルアカ 育成素材,ブルアカ 素材 計算">
 <link rel="icon" href="{% static 'imgs/favicon.ico' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 {% if GOOGLE_ANALYTICS_TRACKING_ID %}
@@ -15,9 +15,9 @@
      crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/06fc159213.js" crossorigin="anonymous"></script>
 
-<title>ブルーアーカイブ（ブルアカ）育成マスター</title>
+<title>ブルーアーカイブ（ブルアカ）育成マスター | 育成素材を一括計算</title>
 
-<meta name="twitter:card" content="summary" />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:site" content="@BlueArchiveCalc" />
 <meta property="og:url" content="https://bluearchive-calculator.com/" />
 <meta property="og:title" content="ブルーアーカイブ（ブルアカ）育成マスター" />
@@ -29,7 +29,7 @@
 <div class="header">
   <div class="container">
     <h1 class="siteName"><a href="../">ブルアカ育成マスター</a></h1>
-    <p class="copy">必要素材を一括計算</p>
+    <p class="copy">育成素材を一括計算</p>
   </div>
 </div>
 {% block content %}{% endblock %}
@@ -38,7 +38,7 @@
 {% if guide_msg != "" %}
 <div class="guidespace"></div>
 <div class="guidemsg">
-  <h3>Guide</h3>
+  <h4>Guide</h4>
   <p>{{ guide_msg | linebreaksbr }}</p>
 </div>
 {% endif %}
@@ -52,11 +52,12 @@
 <input type="checkbox" id="menuOnOff">
 <div class="menuBar">
   <ul class="menu">
-    <li><a href="./"><i class="fas fa-calculator"></i>Calculate</a></li>
-    <li><a href="./howto"><i class="far fa-lightbulb"></i>How To</a></li>
-    <li><a href="./about"><i class="far fa-question-circle"></i>About</a></li>
-    <li><a href="https://twitter.com/intent/tweet?text=%23ブルアカ育成マスター で育成素材を計算しよう！%0A%23ブルアカ%0Ahttps%3A%2F%2Fbluearchive-calculator.com%2F"><i class="fab fa-twitter"></i>Share</a></li>
-    <li><a href="https://twitter.com/messages/compose?recipient_id=1438494596707729416"><i class="far fa-envelope"></i>Contact</a></li>
+    <li><a href="{% url 'charchoise'%}"><i class="fas fa-calculator"></i>Let's Calculate!</a></li>
+    <li><a href="{% url 'about'%}"><i class="fas fa-question-circle"></i>About</a></li>
+    <li><a href="{% url 'howto'%}"><i class="fas fa-lightbulb"></i>How To</a></li>
+    <li><a href="{% url 'privacypolicy'%}"><i class="fas fa-id-badge"></i></i></i>Privacy Policy</a></li>
+    <li><a href="https://twitter.com/intent/tweet?text=%23ブルアカ育成マスター で育成素材を計算しよう！%0A%23ブルアカ%0Ahttps%3A%2F%2Fbluearchive-calculator.com%2F"><i class="fab fa-twitter"></i>Share on Twitter</a></li>
+    <li><a href="https://forms.gle/HeBsiPisRznURhnj8"><i class="fas fa-envelope"></i>Contact</a></li>
   </ul>
 </div>
 

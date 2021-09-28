@@ -2,11 +2,12 @@
 {% block content %}
 <div class="container">
 <div class="boxes-container">
+<h2 class="heading">{{ pagetitle }}</h2>
 {% for headings, texts in txts %}
 <div class="boxArea">
-<h2 class="heading">{{ headings }}</h2>
+<h3 class="heading">{{ headings }}</h3>
 <div class="boxAreaWrap">
-  <p>{{ texts | linebreaksbr  }}</p>
+  <p class="texts">{{ texts | safe }}</p>
 </div>
 </div>
 {% endfor %}

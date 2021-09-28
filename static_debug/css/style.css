@@ -98,6 +98,17 @@ body{
   border-radius: 5px;
 }
 
+.boxArea p.texts{
+  margin: 0.5rem;
+  width: 100%;
+  text-align: left;
+  line-height: 1.5rem;
+}
+
+.boxAreaWrap a{
+  text-decoration: underline;
+}
+
 .charBox{
   width: 12%;
   min-width: 60px;
@@ -333,7 +344,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .guidespace{
   min-height: 13em;
 }
-.guidemsg h3{
+.guidemsg h4{
   line-height: 2rem;
   margin: 0;
   padding: 0 1rem;
@@ -389,7 +400,7 @@ input[type="number"]::-webkit-outer-spin-button {
   position: fixed;
   background-color: rgb(248, 250, 251);
   z-index:9;
-  top: -13rem;
+  top: -16rem;
   right:-1rem;
   width: 100%;
   max-width: 15.0rem;
@@ -497,7 +508,7 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 
 
-  h3.boxAreaBar{
+  h4.boxAreaBar{
     line-height: 2.4em;
     font-size: 1.2rem;
   }

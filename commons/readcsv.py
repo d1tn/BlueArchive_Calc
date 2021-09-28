@@ -84,3 +84,9 @@ exLv_max = exLv["CurrentLv"].max().astype('int')
 sklLv_min = sklLv["CurrentLv"].min().astype('int')
 # 最大値
 sklLv_max = sklLv["CurrentLv"].max().astype('int')
+
+
+########################################
+#　　　テキストデータ読み込み
+#######################################
+PagesTexts = pd.DataFrame(pd.read_csv(csvFolder + "Texts/00_Contents.csv", encoding="utf-8"))
