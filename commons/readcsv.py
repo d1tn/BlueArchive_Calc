@@ -13,7 +13,7 @@ stuData = pd.DataFrame(pd.read_csv(csvFolder + "Main/00_Students_Data.csv", enco
 stuOP = pd.DataFrame(pd.read_csv(csvFolder + "Main/11_Students_OP.csv", encoding="utf-8"))
 stuOP = stuOP.fillna(stuOP.mean(numeric_only=True)+1).astype('int',errors='ignore')
 
-display(stuOP)
+print(stuOP)
 
 #その他データ
 schl = pd.DataFrame(pd.read_csv(csvFolder + "Main/01_School.csv", encoding="utf-8"))
