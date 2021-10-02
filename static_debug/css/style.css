@@ -282,7 +282,7 @@ td > div.charBoxwrap{
 }
 
 td .charNameBar{
-  line-height: 2vw;
+  /* line-height: max(2.4vw,1.0rem); */
   font-size: max(1vw,0.6rem);
 }
 
