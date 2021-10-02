@@ -290,4 +290,5 @@ def privacypolicy(request):
     'txts':zip(headings, texts),
     'guide_msg':'',
     }
+    
     return render(request,temp_name,context)
