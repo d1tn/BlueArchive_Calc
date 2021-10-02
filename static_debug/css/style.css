@@ -130,8 +130,8 @@ table.input th font *
 .charNameBar{
   box-sizing: border-box;
   position: absolute;
-  line-height: max(2.4vw,1.0rem);
-  font-size: 2vw;
+  line-height: max(2.0vw,1.0rem);
+  font-size: max(1.5vw,1.0rem);;
   margin:  0;
   bottom: 0px;
   color: #ffffff;
@@ -282,7 +282,7 @@ td > div.charBoxwrap{
 }
 
 td .charNameBar{
-  /* line-height: max(2.4vw,1.0rem); */
+  line-height: max(1.2vw,0.8rem);
   font-size: max(1vw,0.6rem);
 }
 
@@ -530,7 +530,6 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 
   .charNameBar{
-    line-height: 2vw;
   font-size: min(1.5vw, 1.0rem);
   }
 
