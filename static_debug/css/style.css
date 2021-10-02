@@ -130,7 +130,7 @@ table.input th font *
 .charNameBar{
   box-sizing: border-box;
   position: absolute;
-  line-height: 2.4vw;
+  line-height: max(2.4vw,1.0rem);
   font-size: 2vw;
   margin:  0;
   bottom: 0px;
