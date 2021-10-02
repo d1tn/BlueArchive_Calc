@@ -23,12 +23,11 @@ def delSession(request):
 #１．キャラ選択画面
 def charchoise(request):
     temp_name = "charchoise.html"
+    page = 'top'
+    row = PagesTexts[PagesTexts['page'] == page]
     title = ''
-
-    # セッション削除
-    # del request.session['yourCharData']
-    # del request.session['inputs']
-    # # print('your sessions were deleted.')
+    headings = [str(item[4]) for item in row.itertuples()]
+    texts = [str(item[5]) for item in row.itertuples()]
 
     temp_name = "charchoise.html"
     guide_msg = '強化する生徒を選んでください。\n選び終わったら、「次へ」を押してください。'
@@ -46,6 +45,7 @@ def charchoise(request):
 
     context = {
     'pagetitle':title,
+    'txts':zip(headings, texts),
     'chars' : zip(charId,charName),
     'guide_msg':guide_msg,
     }
@@ -56,7 +56,7 @@ def input(request):
     # print('\n\n▼ Input Page ▼')
     temp_name = "input.html"
     title = '育成状況の入力'
-    guide_msg = '生徒の育成度合いについて、現時点の数値と育成目標を入力してください。\n入力が終わったら「計算する」を押してください。'
+    guide_msg = '生徒の育成度合いについて、現時点の数値と育成目標を入力してください。\n入力が終わったら「計算する」を押してください。\n【注意】入力中にブラウザを更新しないでください。入力中の数値がリセットされてしまいます。'
 
 
     # 入力済みデータが存在する場合はそちらから読み込む
