@@ -11,15 +11,6 @@ from .forms import *
 import copy
 
 
-# ０．セッション削除
-def delSession(request):
-    temp_name = "charchoise.html"
-    del request.session['yourCharData']
-    del request.session['inputs']
-    # print('your sessions were deleted.')
-    return render(request,temp_name)
-
-
 #１．キャラ選択画面
 def charchoise(request):
     temp_name = "charchoise.html"

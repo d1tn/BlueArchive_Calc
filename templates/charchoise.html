@@ -4,8 +4,16 @@
 <form action="input" method="get" >
 <div class="container">
   <div class="boxes-container">
-  <h2 class="heading">育成する生徒を選択</h2>
+  <h2 class="heading">ブルアカ育成マスター</h2>
 <p>{{msg}}</p>
+{% for headings, texts in txts %}
+  <div class="boxArea">
+  <h3 class="heading">{{ headings }}</h3>
+    <div class="boxAreaWrap">
+      <p class="texts">{{ texts | safe }}</p>
+    </div>
+  </div>
+{% endfor %}
     <div class="boxArea chars">
     <h3 class="heading">生徒一覧</h3>
       <div class="boxAreaWrap">
