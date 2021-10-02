@@ -77,6 +77,12 @@ body{
   background-color: var(--color-blue-1);
   border-radius: 5px;
 }
+.heading font *,
+.charNameBar font *,
+.charBoxwrap font *,
+table.input th font *
+{ color: #fff; }
+
 
 .boxArea{
   margin: 0;
@@ -134,6 +140,8 @@ body{
   padding: 0.2rem 0;
   background-color: var(--color-blue-1-alpha);
 }
+
+
 .chosenChars .charNameBar{
   /* line-height: 2.4vw;
   font-size: 2vw; */

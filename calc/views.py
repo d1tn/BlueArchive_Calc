@@ -23,6 +23,7 @@ def delSession(request):
 #１．キャラ選択画面
 def charchoise(request):
     temp_name = "charchoise.html"
+    title = ''
 
     # セッション削除
     # del request.session['yourCharData']
@@ -44,6 +45,7 @@ def charchoise(request):
     request.session['inputs'] = inputs
 
     context = {
+    'pagetitle':title,
     'chars' : zip(charId,charName),
     'guide_msg':guide_msg,
     }
@@ -53,6 +55,7 @@ def charchoise(request):
 def input(request):
     # print('\n\n▼ Input Page ▼')
     temp_name = "input.html"
+    title = '育成状況の入力'
     guide_msg = '生徒の育成度合いについて、現時点の数値と育成目標を入力してください。\n入力が終わったら「計算する」を押してください。'
 
 
@@ -109,6 +112,7 @@ def input(request):
 
     ths = ['キャラ','装備1','装備2','装備3','EXスキル','ノーマルスキル','パッシブスキル','サブスキル']
     context = {
+    'pagetitle':title,
     'ths':ths,
     'charDatas' : zip(charInputs,charNames),
     #プルダウン用リスト、最大値最小値等をreadcsv.pyから取得
@@ -120,6 +124,7 @@ def input(request):
 
 # ３．計算
 def calc(request):
+    title = '計算結果'
     # print('\n\n▼ Result Page ▼')
     guide_msg =''
     result = []
@@ -129,6 +134,7 @@ def calc(request):
     inputs = []
     msg = []
     context = {
+    'pagetitle':title,
     'guide_msg':guide_msg
     }
 
