@@ -262,7 +262,7 @@ table.input th{
   font-weight: normal;
   background-color: var(--color-blue-1);
   border-radius: 5px;
-  line-height: 2.2vw;
+  line-height: max(2.2vw,1.0rem);
   font-size: max(1vw,0.6rem);
   position: sticky;
   top: 4.0rem;
