@@ -130,8 +130,8 @@ table.input th font *
 .charNameBar{
   box-sizing: border-box;
   position: absolute;
-  line-height: max(2.0vw,1.0rem);
-  font-size: max(1.0vw,1.0rem);;
+  line-height: max(1.2vw,0.8rem);
+  font-size: max(1vw,0.6rem);
   margin:  0;
   bottom: 0px;
   color: #ffffff;
@@ -262,8 +262,8 @@ table.input th{
   font-weight: normal;
   background-color: var(--color-blue-1);
   border-radius: 5px;
-  line-height: max(2.2vw,1.0rem);
-  font-size: min(1vw,0.6rem);
+  line-height: max(1.2vw,0.8rem);
+  font-size: max(1vw,0.6rem);
   position: sticky;
   top: 4.0rem;
   z-index: 6;
@@ -279,11 +279,6 @@ td > div.charBoxwrap{
   width: 100%;
   margin: 0;
   border-radius: 0px;
-}
-
-td .charNameBar{
-  line-height: max(1.2vw,0.8rem);
-  font-size: max(1vw,0.6rem);
 }
 
 table.input{
