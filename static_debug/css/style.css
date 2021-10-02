@@ -350,7 +350,7 @@ input[type="number"]::-webkit-outer-spin-button {
   box-shadow: var(--window-shadow-1);
 }
 .guidespace{
-  min-height: 13em;
+  min-height: 20em;
 }
 .guidemsg h4{
   line-height: 2rem;
@@ -555,6 +555,11 @@ table .Eqs select{
     right:1.0rem;;
     font-size: 1.0rem;
   }
+
+  .guidespace{
+    min-height: 13em;
+  }
+
 }
 
 @media screen and (min-width: 960px){
