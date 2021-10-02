@@ -77,12 +77,12 @@ body{
   background-color: var(--color-blue-1);
   border-radius: 5px;
 }
+
 .heading font *,
 .charNameBar font *,
 .charBoxwrap font *,
 table.input th font *
 { color: #fff; }
-
 
 .boxArea{
   margin: 0;
