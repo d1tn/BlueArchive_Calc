@@ -11,6 +11,7 @@ from .forms import *
 import copy
 #sqlite
 from .models import InputData
+import socket
 
 ########################################
 #　　　　　　１．計算ページ
@@ -315,8 +316,7 @@ def saved(request):
     classes = [str(item[4]) for item in row.itertuples()]
     headings = [str(item[5]) for item in row.itertuples()]
     texts = [str(item[6]) for item in row.itertuples()]
-    input = []
-    input = request.POST.getlist('input', None)
+    input = request.POST.getlist('inputData', None)
 
     headings += ['認証キー']
     classes += ['ninsho']
@@ -325,7 +325,7 @@ def saved(request):
     texts += ['<span>'+key+'</span>']
 
     intoDB = InputData(authKeys=key)
-    intoDB.inputs = input
+    intoDB.inputs = input[0]
     intoDB.save()
 
     context = {
