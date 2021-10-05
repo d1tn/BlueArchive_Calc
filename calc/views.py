@@ -389,13 +389,15 @@ def loaded(request):
         # キー文字列(英数字6文字)の生成
         intoDB = InputData.objects.get(authKeys=loadKey)
         input = intoDB.inputs
-        print(input,':読込OK')
-        print(input)
-    except IntegrityError:
-        print(key,':重複データ有り。再抽選')
+    except InputData.DoesNotExist:
+        classes[0] = 'error'
+        texts[0] = 'データが存在しません。<br>認証キーが正しいか確認してください。'
     else:
-        request.session['yourCharData'] = StrToArray(input)
-
+        request.session['yourCharData'] = []
+        input = StrToArray(input)
+        print(input)
+        request.session['yourCharData'] = input
+    finally:
         context = {
         'pagetitle':title,
         'txts':zip(headings, texts, classes),

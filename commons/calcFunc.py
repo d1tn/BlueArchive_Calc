@@ -4,6 +4,9 @@ import numpy as np
 from commons.readcsv import *
 import uuid # ハッシュ値生成用
 
+#データの入力列数
+col = 18
+
 #関数
 columns=["生徒ID", "ToDo", "アイテムID", "数量"]
 
@@ -242,9 +245,10 @@ def ArrayToStr(array):
 # 文字列 => 多次元配列への変換('1,2,3,4,5,6' => [[1,2,3],[4,5,6]])
 def StrToArray(string):
     arr1 = [int(i) for i in string.split(',')]
+    print('●',len(arr1),col)
     arr2 = []
     for i in range(int(len(arr1)/col)):
-        arr2.append([i*col + j for j in range(col)])
+        arr2.append([ arr1[i*col + j] for j in range(col)])
     return arr2
 
 #データと紐づけるためのキー文字列の生成（アルファベット大文字・小文字のみ）
