@@ -9,6 +9,8 @@ from commons.readcsv import *
 from commons.calcFunc import *
 from .forms import *
 import copy
+#sqlite
+from .models import InputData
 
 ########################################
 #　　　　　　１．計算ページ
@@ -320,6 +322,10 @@ def saved(request):
     # キー文字列(英数字6文字)の生成
     key = get_random_string(8)
     texts += ['<span>'+key+'</span>']
+
+    intoDB = InputData(authKeys=key)
+    intoDB.inputs = input
+    intoDB.save()
 
     context = {
     'pagetitle':title,
