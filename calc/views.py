@@ -117,7 +117,7 @@ def input(request):
     return render(request,temp_name,context)
 
 # ３．計算
-def calc(request):
+def result(request):
     title = '計算結果'
     # print('\n\n▼ Result Page ▼')
     result = []
@@ -235,8 +235,6 @@ def calc(request):
         for i in request.session['yourCharData']:
             pass
             # print(i)
-
-
 
     temp_name = "result.html"
     return render(request,temp_name,context)
