@@ -113,6 +113,16 @@ table.input th font *
   line-height: 1.5rem;
 }
 
+/* 認証キー装飾 */
+.ninsho{
+  display: inline-block;
+  padding: 0.5rem 1.0rem;
+  font-size: 2.0rem;
+  margin: auto;
+  background-color: #ffdddd;
+}
+
+
 .boxAreaWrap a{
   text-decoration: underline;
 }
@@ -449,6 +459,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .menubtn:active{
   transform: scale(0.9,0.9);
 }
+
 
 
 
