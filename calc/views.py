@@ -363,7 +363,7 @@ def loadData(request):
     context = {
     'pagetitle':title,
     'txts':zip(headings, texts, classes),
-    'inputData':inputData,
+    'inputData':'none',
     }
     return render(request,temp_name,context)
 
