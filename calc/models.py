@@ -6,7 +6,8 @@ class InputData(models.Model):
     """docstring for InputData."""
     authKeys = models.CharField(unique=True,max_length=10)
     inputs = models.CharField(max_length=10000)
-    ip = models.CharField(default='',max_length=16)
+    ip = models.CharField(default='',max_length=64)
+    host = models.CharField(default='',max_length=64)
     date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

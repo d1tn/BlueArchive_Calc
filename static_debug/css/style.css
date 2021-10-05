@@ -96,6 +96,7 @@ table.input th font *
   box-shadow: var(--window-shadow-1);
 }
 
+
 .boxAreaWrap{
   display: flex;
   flex-wrap: wrap;
@@ -113,6 +114,22 @@ table.input th font *
   line-height: 1.5rem;
 }
 
+/* エラーメッセージ用 */
+.boxArea.error{
+  background-color: #ffdddd;
+}
+.boxArea.error .heading{
+  background-color: #86000B;
+}
+.boxArea.error .boxAreaWrap{
+  border-color: #86000B;
+}
+.boxArea.error .texts{
+  color: #86000B;
+}
+
+
+
 /* 認証キー装飾 */
 .boxArea.ninsho p{
   text-align: center;
@@ -125,6 +142,7 @@ table.input th font *
   padding: 0.5rem 1.2rem;
   font-size: 1.2rem;
   line-height: 1.8rem;
+  color: #86000B;
 }
 
 .boxAreaWrap a{

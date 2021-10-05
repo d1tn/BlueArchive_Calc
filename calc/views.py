@@ -11,6 +11,7 @@ from .forms import *
 import copy
 #sqlite
 from .models import InputData
+from django.db import IntegrityError
 import socket
 
 ########################################
@@ -323,18 +324,26 @@ def saved(request):
     # キー文字列(英数字6文字)の生成
     key = get_random_string(8)
     texts += ['<span>'+key+'</span>']
-    intoDB = InputData(authKeys=key)
-    intoDB.inputs = input[0]
-    host = socket.gethostname()
-    intoDB.ip = socket.gethostbyname(host)
-    intoDB.save()
 
-    context = {
-    'pagetitle':title,
-    'txts':zip(headings, texts, classes),
-    'inputData':'none',
-    }
-    return render(request,temp_name,context)
+    try:
+        intoDB = InputData(authKeys='GleLpynz')
+        intoDB.inputs = input[0]
+        host = socket.gethostname()
+        intoDB.host = host
+        intoDB.ip = socket.gethostbyname(host)
+        intoDB.save()
+    except IntegrityError:
+        classes[0] = 'error'
+        texts[0] = 'データ重複'
+    else:
+        request.POST.getlist('inputData', None) = ''
+    finally:
+        context = {
+        'pagetitle':title,
+        'txts':zip(headings, texts, classes),
+        'inputData':'none',
+        }
+        return render(request,temp_name,context)
 
 
 def loadData(request):
