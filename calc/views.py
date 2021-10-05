@@ -324,7 +324,6 @@ def saved(request):
 
     input = request.POST.getlist('inputData', None)
 
-
     if exist_submit_token(request):
         num = 0
         while num < 1:
@@ -334,7 +333,7 @@ def saved(request):
                 intoDB = InputData(authKeys=key)
                 intoDB.inputs = input[0]
                 # host = socket.gethostname()
-                intoDB.host = host
+                # intoDB.host = host
                 # intoDB.ip = socket.gethostbyname(host)
                 intoDB.save()
                 num += 1
