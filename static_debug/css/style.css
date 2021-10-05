@@ -352,10 +352,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .Btn{
   display: inline-block;
   z-index: 10;
-  font-size: 1.0rem;
-  margin: 0.5rem 1.0rem;
-  min-width: 120px;
-  padding: 1.0rem;
+  font-weight: bold;
   border: none;
   border-radius : 5px;
   cursor        : pointer;
@@ -363,6 +360,10 @@ input[type="number"]::-webkit-outer-spin-button {
   transform: skewX(-9deg);
   transition    : .3s;
   box-shadow: var(--window-shadow-1);
+  font-size: 1.0rem;
+  margin: 0.5rem 1.0rem;
+  min-width: 120px;
+  padding: 1.0rem;
 }
 
 .btnWrap{
@@ -523,6 +524,13 @@ table .Eqs select{
   .itemBar{
     text-shadow: 0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff,0 0 2px #fff;
   }
+
+.Btn{
+  font-size: 1.5rem;
+  margin: 1.0rem;
+  min-width: 150px;
+  padding: 1.0rem 2.0rem;
+}
 
   .menubtn{
     top: 0.5rem;
