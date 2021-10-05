@@ -16,6 +16,7 @@ import socket # IP表示用
 from django.views.decorators.csrf import requires_csrf_token
 from django.http import HttpResponseServerError
 
+# 500エラー時の原因表示
 @requires_csrf_token
 def my_customized_server_error(request, template_name='500.html'):
     import sys
