@@ -315,6 +315,7 @@ def saved(request):
     classes = [str(item[4]) for item in row.itertuples()]
     headings = [str(item[5]) for item in row.itertuples()]
     texts = [str(item[6]) for item in row.itertuples()]
+    input = []
     input = request.POST.getlist('input', None)
 
     headings += ['認証キー']
