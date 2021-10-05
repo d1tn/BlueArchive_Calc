@@ -304,16 +304,24 @@ def saveConfirm(request):
 
 def saved(request):
     temp_name = "save.html"
-    page = 'saveData'
+    page = 'saved'
     row = PagesTexts[PagesTexts['page'] == page]
     title = [item for item in row['title']][0]
     headings = [str(item[4]) for item in row.itertuples()]
     texts = [str(item[5]) for item in row.itertuples()]
+    input = request.POST.getlist('input', None)
 
+    headings += ['認証キー']
     # キー文字列(英数字6文字)の生成
     key = get_random_string(6)
+    texts += ['<span class="ninsho">'+key+'<span>']
 
-    pass
+    context = {
+    'pagetitle':title,
+    'txts':zip(headings, texts),
+    'inputData':'none',
+    }
+    return render(request,temp_name,context)
 
 
 def loadData(request):
