@@ -1,5 +1,5 @@
-{% for headings, texts in txts %}
-  <div class="boxArea {{contentsClass}}">
+{% for headings, texts, classes in txts %}
+  <div class="boxArea{% if classes != 'nan'%} {{classes}}{% endif %}">
   <h3 class="heading">{{ headings }}</h3>
     <div class="boxAreaWrap">
       <p class="texts">{{ texts | safe }}</p>
