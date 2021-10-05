@@ -316,9 +316,10 @@ def saved(request):
     input = request.POST.getlist('input', None)
 
     headings += ['認証キー']
+    classes += ['ninsho']
     # キー文字列(英数字6文字)の生成
     key = get_random_string(6)
-    texts += ['<span class="ninsho">'+key+'<span>']
+    texts += [key]
 
     context = {
     'pagetitle':title,
