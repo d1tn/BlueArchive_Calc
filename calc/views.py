@@ -333,9 +333,9 @@ def saved(request):
                 key = get_random_string(8)
                 intoDB = InputData(authKeys=key)
                 intoDB.inputs = input[0]
-                host = socket.gethostname()
+                # host = socket.gethostname()
                 intoDB.host = host
-                intoDB.ip = socket.gethostbyname(host)
+                # intoDB.ip = socket.gethostbyname(host)
                 intoDB.save()
                 num += 1
             except IntegrityError:
