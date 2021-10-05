@@ -38,6 +38,7 @@ def charchoise(request):
 
     context = {
     'pagetitle':title,
+    'contentsClass':classes,
     'txts':zip(headings, texts),
     'chars' : zip(charId,charName),
     }
@@ -109,6 +110,7 @@ def input(request):
     ths = ['キャラ','装備1','装備2','装備3','EXスキル','ノーマルスキル','パッシブスキル','サブスキル']
     context = {
     'pagetitle':title,
+    'contentsClass':classes,
     'txts':zip(headings, texts),
     'ths':ths,
     'charDatas' : zip(charInputs,charNames),
@@ -259,6 +261,7 @@ def saveConfirm(request):
 
         context = {
         'pagetitle':title,
+        'contentsClass':classes,
         'txts':zip(headings, texts),
         'inputData':'none',
         }
@@ -296,6 +299,7 @@ def saveConfirm(request):
         ths = ['キャラ','装備1','装備2','装備3','EXスキル','ノーマルスキル','パッシブスキル','サブスキル']
         context = {
         'pagetitle':title,
+        'contentsClass':classes,
         'txts':zip(headings, texts),
         'ths':ths,
         'charDatas': zip(charInputs,charNames),
@@ -322,6 +326,7 @@ def saved(request):
 
     context = {
     'pagetitle':title,
+    'contentsClass':classes,
     'txts':zip(headings, texts),
     'inputData':'none',
     }
@@ -346,6 +351,7 @@ def howto(request):
 
     context = {
     'pagetitle':title,
+    'contentsClass':classes,
     'txts':zip(headings, texts),
     }
     return render(request,temp_name,context)
@@ -362,6 +368,7 @@ def about(request):
 
     context = {
     'pagetitle':title,
+    'contentsClass':classes,
     'txts':zip(headings, texts),
     }
     return render(request,temp_name,context)
@@ -378,6 +385,7 @@ def privacypolicy(request):
 
     context = {
     'pagetitle':title,
+    'contentsClass':classes,
     'txts':zip(headings, texts),
     }
 
