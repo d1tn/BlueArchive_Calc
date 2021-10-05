@@ -360,6 +360,9 @@ def loadData(request):
     classes = [str(item[4]) for item in row.itertuples()]
     headings = [str(item[5]) for item in row.itertuples()]
     texts = [str(item[6]) for item in row.itertuples()]
+
+    texts[0] += '<br><input type="text" name="load" maxlength="10" required="required">'
+
     context = {
     'pagetitle':title,
     'txts':zip(headings, texts, classes),
