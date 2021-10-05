@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% include 'content.html' %}
+{% if inputData != "none" %}
+  {% include 'chartbl_static.html' %}
+{% endif %}
+
+<a href="../" class="Btn  blue">トップへ戻る</a>
+
+{% endblock %}

@@ -317,6 +317,7 @@ def saved(request):
     classes = [str(item[4]) for item in row.itertuples()]
     headings = [str(item[5]) for item in row.itertuples()]
     texts = [str(item[6]) for item in row.itertuples()]
+
     input = request.POST.getlist('inputData', None)
 
 
@@ -352,7 +353,19 @@ def saved(request):
 
 
 def loadData(request):
-    pass
+    temp_name = "load.html"
+    page = 'loadData'
+    row = PagesTexts[PagesTexts['page'] == page]
+    title = [item for item in row['title']][0]
+    classes = [str(item[4]) for item in row.itertuples()]
+    headings = [str(item[5]) for item in row.itertuples()]
+    texts = [str(item[6]) for item in row.itertuples()]
+    context = {
+    'pagetitle':title,
+    'txts':zip(headings, texts, classes),
+    'inputData':inputData,
+    }
+    return render(request,temp_name,context)
 
 ########################################
 #　　　　　　３．テキスト表示ページ
