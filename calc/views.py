@@ -380,7 +380,9 @@ def loaded(request):
     headings = [str(item[5]) for item in row.itertuples()]
     texts = [str(item[6]) for item in row.itertuples()]
 
-    texts[0] += '<br><input type="text" name="load" maxlength="10" required="required">'
+    loadKey = request.POST.getlist('loadKey')
+
+    texts[0] += '<br><input type="text" name="loadKey" maxlength="10" required="required">'
 
     context = {
     'pagetitle':title,
