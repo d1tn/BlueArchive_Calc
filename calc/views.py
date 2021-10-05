@@ -20,7 +20,8 @@ def charchoise(request):
     row = PagesTexts[PagesTexts['page'] == page]
     title = [item for item in row['title']][0]
     headings = [str(item[4]) for item in row.itertuples()]
-    texts = [str(item[5]) for item in row.itertuples()]
+    classes = [str(item[5]) for item in row.itertuples()]
+    texts = [str(item[6]) for item in row.itertuples()]
 
     temp_name = "charchoise.html"
 
@@ -50,7 +51,8 @@ def input(request):
     row = PagesTexts[PagesTexts['page'] == page]
     title = [item for item in row['title']][0]
     headings = [str(item[4]) for item in row.itertuples()]
-    texts = [str(item[5]) for item in row.itertuples()]
+    classes = [str(item[5]) for item in row.itertuples()]
+    texts = [str(item[6]) for item in row.itertuples()]
 
 
     # 入力済みデータが存在する場合はそちらから読み込む
@@ -248,7 +250,8 @@ def saveConfirm(request):
     row = PagesTexts[PagesTexts['page'] == page]
     title = [item for item in row['title']][0]
     headings = [str(item[4]) for item in row.itertuples()]
-    texts = [str(item[5]) for item in row.itertuples()]
+    classes = [str(item[5]) for item in row.itertuples()]
+    texts = [str(item[6]) for item in row.itertuples()]
 
     #セッションデータの読込
     if request.session['yourCharData'] ==[]:
@@ -308,7 +311,8 @@ def saved(request):
     row = PagesTexts[PagesTexts['page'] == page]
     title = [item for item in row['title']][0]
     headings = [str(item[4]) for item in row.itertuples()]
-    texts = [str(item[5]) for item in row.itertuples()]
+    classes = [str(item[5]) for item in row.itertuples()]
+    texts = [str(item[6]) for item in row.itertuples()]
     input = request.POST.getlist('input', None)
 
     headings += ['認証キー']
@@ -337,7 +341,8 @@ def howto(request):
     row = PagesTexts[PagesTexts['page'] == page]
     title = [item for item in row['title']][0]
     headings = [str(item[4]) for item in row.itertuples()]
-    texts = [str(item[5]) for item in row.itertuples()]
+    classes = [str(item[5]) for item in row.itertuples()]
+    texts = [str(item[6]) for item in row.itertuples()]
 
     context = {
     'pagetitle':title,
@@ -352,7 +357,8 @@ def about(request):
     row = PagesTexts[PagesTexts['page'] == page]
     title = [item for item in row['title']][0]
     headings = [str(item[4]) for item in row.itertuples()]
-    texts = [str(item[5]) for item in row.itertuples()]
+    classes = [str(item[5]) for item in row.itertuples()]
+    texts = [str(item[6]) for item in row.itertuples()]
 
     context = {
     'pagetitle':title,
@@ -367,7 +373,8 @@ def privacypolicy(request):
     row = PagesTexts[PagesTexts['page'] == page]
     title = [item for item in row['title']][0]
     headings = [str(item[4]) for item in row.itertuples()]
-    texts = [str(item[5]) for item in row.itertuples()]
+    classes = [str(item[5]) for item in row.itertuples()]
+    texts = [str(item[6]) for item in row.itertuples()]
 
     context = {
     'pagetitle':title,
