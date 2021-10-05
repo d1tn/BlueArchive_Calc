@@ -6,6 +6,7 @@ urlpatterns = [
     path('', views.charchoise, name='charchoise'),
     path('input', views.input, name='input'),
     path('calc', views.calc, name='calc'),
+    path('saveConfirm', views.saveConfirm, name='saveConfirm'),
     path('saveData', views.saveData, name='saveData'),
     path('loadData', views.loadData, name='loadData'),
     path('howto', views.howto, name='howto'),

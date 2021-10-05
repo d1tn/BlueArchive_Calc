@@ -1,4 +1,7 @@
-<form action="calc">
+{% load static %}
+<form action="calc" method="POST">
+{% csrf_token%}
+<div class="tableWrap">
 <table class="input">
   <tr>
   <th colspan="2">キャラ名</th>
@@ -48,5 +51,7 @@
   </tr>
   {% endfor %}
 </table>
-  <input type="submit" class="Btn guide yellow" value="計算する">
+</div>
+<div class="btnWrap">
+<input type="submit" class="Btn yellow" value="計算する"></div>
 </form>

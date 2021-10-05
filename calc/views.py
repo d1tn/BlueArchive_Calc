@@ -82,7 +82,7 @@ def input(request):
 
 
     #対象キャラIDをリクエストから受取
-    charIds = request.GET.getlist('char', None)
+    charIds = request.POST.getlist('char', None)
     charNames = []
     # 入力データの文字列変換用
     charInputs = []
@@ -121,7 +121,7 @@ def calc(request):
     title = '計算結果'
     # print('\n\n▼ Result Page ▼')
     result = []
-    input = request.GET.getlist('input', None)
+    input = request.POST.getlist('input', None)
     # セッション変数からの受取
     # inputs = request.session['inputs']
     inputs = []
@@ -243,6 +243,66 @@ def calc(request):
 ########################################
 #　　　　　　２．データの保存・読込
 ########################################
+def saveConfirm(request):
+    temp_name = "save.html"
+    page = 'saveConfirm'
+    row = PagesTexts[PagesTexts['page'] == page]
+    title = [item for item in row['title']][0]
+    headings = [str(item[4]) for item in row.itertuples()]
+    texts = [str(item[5]) for item in row.itertuples()]
+
+    #セッションデータの読込
+    if request.session['yourCharData'] ==[]:
+        texts[0] = "入力データが存在しません。まずは生徒の育成から始めましょう！"
+
+        context = {
+        'pagetitle':title,
+        'txts':zip(headings, texts),
+        'inputData':'none',
+        }
+        return render(request,temp_name,context)
+
+    else:
+        headings += ['入力データ']
+        inputs = request.session['yourCharData']
+        inputData = ArrayToStr(inputs)
+
+        # 入力データを文字列=>数値型に変換
+        StrToInt(inputs)
+
+        #入力済みデータにいないキャラが追加されていた場合は初期値を追加
+        for i in range(len(charId)):
+            if charId[i] not in [input[0] for input in inputs]:
+                # print('New stuID:',charId[i])
+                inputs.append([int(charId[i]),1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0])
+
+        charNames = []
+        # 入力データの文字列変換用
+        charInputs = []
+        for i in range(len(inputs)):
+            charInputs.append(inputs[i])
+            # 文字列変換用
+            #クエリから来たキャラIDを元にキャラ名を検索
+            charNames.append(stuData.loc[stuData["Stu_Id"] == int(inputs[i][0])]["Stu_Name"].item())
+        # print('charInputs:',charInputs)
+        # # セッション変数を更新
+        # request.session['inputs'] = inputs
+        #テンプレートに投げる為に一時的に文字列に変換
+        IntToStr(charInputs)
+        # print('charInputs:',charInputs)
+
+        ths = ['キャラ','装備1','装備2','装備3','EXスキル','ノーマルスキル','パッシブスキル','サブスキル']
+        context = {
+        'pagetitle':title,
+        'txts':zip(headings, texts),
+        'ths':ths,
+        'charDatas': zip(charInputs,charNames),
+        'inputData':inputData,
+        #プルダウン用リストをreadcsv.pyから取得
+        'eqLv_List':eqLv_List,
+        }
+        return render(request,temp_name,context)
+
 def saveData(request):
     temp_name = "save.html"
     page = 'saveData'
@@ -254,21 +314,7 @@ def saveData(request):
     # キー文字列(英数字6文字)の生成
     key = get_random_string(6)
 
-    #セッションデータの読込
-    if request.session['yourCharData'] ==[]:
-        texts[0] = "入力データが存在しません。まずは生徒の育成から始めましょう！"
-    else:
-        headings += ['入力データ']
-        texts += [request.session['yourCharData']]
-
-    save = request.session['yourCharData']
-
-    context = {
-    'pagetitle':title,
-    'txts':zip(headings, texts),
-    }
-    return render(request,temp_name,context)
-
+    pass
 
 
 def loadData(request):
