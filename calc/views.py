@@ -38,8 +38,7 @@ def charchoise(request):
 
     context = {
     'pagetitle':title,
-    'contentsClass':classes,
-    'txts':zip(headings, texts),
+    'txts':zip(headings, texts, classes),
     'chars' : zip(charId,charName),
     }
     return render(request,temp_name,context)
@@ -110,8 +109,7 @@ def input(request):
     ths = ['キャラ','装備1','装備2','装備3','EXスキル','ノーマルスキル','パッシブスキル','サブスキル']
     context = {
     'pagetitle':title,
-    'contentsClass':classes,
-    'txts':zip(headings, texts),
+    'txts':zip(headings, texts, classes),
     'ths':ths,
     'charDatas' : zip(charInputs,charNames),
     #プルダウン用リスト、最大値最小値等をreadcsv.pyから取得
@@ -261,8 +259,7 @@ def saveConfirm(request):
 
         context = {
         'pagetitle':title,
-        'contentsClass':classes,
-        'txts':zip(headings, texts),
+        'txts':zip(headings, texts, classes),
         'inputData':'none',
         }
         return render(request,temp_name,context)
@@ -299,8 +296,7 @@ def saveConfirm(request):
         ths = ['キャラ','装備1','装備2','装備3','EXスキル','ノーマルスキル','パッシブスキル','サブスキル']
         context = {
         'pagetitle':title,
-        'contentsClass':classes,
-        'txts':zip(headings, texts),
+        'txts':zip(headings, texts, classes),
         'ths':ths,
         'charDatas': zip(charInputs,charNames),
         'inputData':inputData,
@@ -326,8 +322,7 @@ def saved(request):
 
     context = {
     'pagetitle':title,
-    'contentsClass':classes,
-    'txts':zip(headings, texts),
+    'txts':zip(headings, texts, classes),
     'inputData':'none',
     }
     return render(request,temp_name,context)
@@ -351,8 +346,7 @@ def howto(request):
 
     context = {
     'pagetitle':title,
-    'contentsClass':classes,
-    'txts':zip(headings, texts),
+    'txts':zip(headings, texts, classes),
     }
     return render(request,temp_name,context)
 
@@ -368,8 +362,7 @@ def about(request):
 
     context = {
     'pagetitle':title,
-    'contentsClass':classes,
-    'txts':zip(headings, texts),
+    'txts':zip(headings, texts, classes),
     }
     return render(request,temp_name,context)
 
@@ -385,8 +378,7 @@ def privacypolicy(request):
 
     context = {
     'pagetitle':title,
-    'contentsClass':classes,
-    'txts':zip(headings, texts),
+    'txts':zip(headings, texts, classes),
     }
 
     return render(request,temp_name,context)
