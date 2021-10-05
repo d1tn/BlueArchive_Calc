@@ -16,6 +16,11 @@ import socket # IP表示用
 ########################################
 #　　　　　　１．計算ページ
 ########################################
+# ０．セッション削除
+def deleteSession(request):
+    request.session['yourCharData'] = []
+    return HttpResponse("セッションIDを削除しました。")
+
 #１．キャラ選択画面
 def charchoise(request):
     temp_name = "charchoise.html"
@@ -33,7 +38,7 @@ def charchoise(request):
     # 初期化方法
     for i in charId:
         #入力配列の初期設定（最後の1は計算するかどうか　0は計算しない）
-        inputs.append([int(i),1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0])
+        inputs.append([int(i),1,1,1,1,1,1,1,1,0,1,1,1,0,0,0,0,0])
 
 
     # 生成した初期値をセッション変数に格納
@@ -56,8 +61,6 @@ def input(request):
     classes = [str(item[4]) for item in row.itertuples()]
     headings = [str(item[5]) for item in row.itertuples()]
     texts = [str(item[6]) for item in row.itertuples()]
-
-    request.session['yourCharData'] =[]
 
     # 入力済みデータが存在する場合はそちらから読み込む
     try:

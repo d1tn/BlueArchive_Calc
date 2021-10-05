@@ -13,4 +13,5 @@ urlpatterns = [
     path('howto', views.howto, name='howto'),
     path('about', views.about, name='about'),
     path('privacypolicy', views.privacypolicy, name='privacypolicy'),
+    path('deleteSession', views.deleteSession, name='deleteSession'),
 ]
