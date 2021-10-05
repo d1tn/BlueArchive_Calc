@@ -145,7 +145,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # 通信を許可するホストネーム
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '15.152.57.115','bluearchive-calculator.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '15.152.57.115','172.31.41.253','bluearchive-calculator.com']
 # ALLOWED_HOSTS = ['*']
 
 # 静的ファイル
