@@ -351,7 +351,7 @@ def saved(request):
     }
     return render(request,temp_name,context)
 
-
+# 認証キー読込ページ
 def loadData(request):
     temp_name = "load.html"
     page = 'loadData'
@@ -369,6 +369,26 @@ def loadData(request):
     'inputData':'none',
     }
     return render(request,temp_name,context)
+
+# 認証キー読込判定
+def loaded(request):
+    temp_name = "load.html"
+    page = 'loaded'
+    row = PagesTexts[PagesTexts['page'] == page]
+    title = [item for item in row['title']][0]
+    classes = [str(item[4]) for item in row.itertuples()]
+    headings = [str(item[5]) for item in row.itertuples()]
+    texts = [str(item[6]) for item in row.itertuples()]
+
+    texts[0] += '<br><input type="text" name="load" maxlength="10" required="required">'
+
+    context = {
+    'pagetitle':title,
+    'txts':zip(headings, texts, classes),
+    'inputData':'none',
+    }
+    return render(request,temp_name,context)
+
 
 ########################################
 #　　　　　　３．テキスト表示ページ
