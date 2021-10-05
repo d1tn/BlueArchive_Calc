@@ -318,7 +318,7 @@ def saved(request):
     headings += ['認証キー']
     classes += ['ninsho']
     # キー文字列(英数字6文字)の生成
-    key = get_random_string(6)
+    key = get_random_string(8)
     texts += [key]
 
     context = {
