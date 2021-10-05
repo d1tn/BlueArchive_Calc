@@ -1,0 +1,8 @@
+{% for headings, texts in txts %}
+  <div class="boxArea">
+  <h3 class="heading">{{ headings }}</h3>
+    <div class="boxAreaWrap">
+      <p class="texts">{{ texts | safe }}</p>
+    </div>
+  </div>
+{% endfor %}

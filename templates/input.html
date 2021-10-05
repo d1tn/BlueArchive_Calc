@@ -3,13 +3,12 @@
 {% block content %}
 {% for i in msg %}
 <p class="errormsg">{{ i }}</p>
-{% endfor %}  
-<div class="container">
+{% endfor %}
 
-<div class="tableWrap">
-  <h3 class="heading">育成状況の入力</h3>
+{% include 'content.html' %}
 
 <form action="calc">
+<div class="tableWrap">
 <table class="input">
   <tr>
   <th colspan="2">キャラ名</th>
@@ -59,8 +58,8 @@
   </tr>
   {% endfor %}
 </table>
-  <input type="submit" class="Btn guide yellow" value="計算する">
+</div>
+<div class="btnWrap">
+<input type="submit" class="Btn yellow" value="計算する"></div>
 </form>
-</div>
-</div>
 {% endblock %}

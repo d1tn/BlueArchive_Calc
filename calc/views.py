@@ -10,18 +10,19 @@ from commons.calcFunc import *
 from .forms import *
 import copy
 
-
+########################################
+#　　　　　　１．計算ページ
+########################################
 #１．キャラ選択画面
 def charchoise(request):
     temp_name = "charchoise.html"
     page = 'top'
     row = PagesTexts[PagesTexts['page'] == page]
-    title = ''
+    title = [item for item in row['title']][0]
     headings = [str(item[4]) for item in row.itertuples()]
     texts = [str(item[5]) for item in row.itertuples()]
 
     temp_name = "charchoise.html"
-    guide_msg = '強化する生徒を選んでください。\n選び終わったら、「次へ」を押してください。'
 
     # 配列の生成
     inputs = []
@@ -38,7 +39,6 @@ def charchoise(request):
     'pagetitle':title,
     'txts':zip(headings, texts),
     'chars' : zip(charId,charName),
-    'guide_msg':guide_msg,
     }
     return render(request,temp_name,context)
 
@@ -46,8 +46,11 @@ def charchoise(request):
 def input(request):
     # print('\n\n▼ Input Page ▼')
     temp_name = "input.html"
-    title = '育成状況の入力'
-    guide_msg = '生徒の育成度合いについて、現時点の数値と育成目標を入力してください。\n入力が終わったら「計算する」を押してください。\n【注意】入力中にブラウザを更新しないでください。入力中の数値がリセットされてしまいます。'
+    page = 'input'
+    row = PagesTexts[PagesTexts['page'] == page]
+    title = [item for item in row['title']][0]
+    headings = [str(item[4]) for item in row.itertuples()]
+    texts = [str(item[5]) for item in row.itertuples()]
 
 
     # 入力済みデータが存在する場合はそちらから読み込む
@@ -104,12 +107,12 @@ def input(request):
     ths = ['キャラ','装備1','装備2','装備3','EXスキル','ノーマルスキル','パッシブスキル','サブスキル']
     context = {
     'pagetitle':title,
+    'txts':zip(headings, texts),
     'ths':ths,
     'charDatas' : zip(charInputs,charNames),
     #プルダウン用リスト、最大値最小値等をreadcsv.pyから取得
     'eqLv_List':eqLv_List,
     'max_min':[[charLv_max,charLv_min], [exLv_max, exLv_min], [sklLv_max, sklLv_min]],
-    'guide_msg':guide_msg
     }
     return render(request,temp_name,context)
 
@@ -117,7 +120,6 @@ def input(request):
 def calc(request):
     title = '計算結果'
     # print('\n\n▼ Result Page ▼')
-    guide_msg =''
     result = []
     input = request.GET.getlist('input', None)
     # セッション変数からの受取
@@ -126,7 +128,6 @@ def calc(request):
     msg = []
     context = {
     'pagetitle':title,
-    'guide_msg':guide_msg
     }
 
     # クエリを多次元配列の形に変換
@@ -239,12 +240,44 @@ def calc(request):
 
     temp_name = "result.html"
     return render(request,temp_name,context)
+########################################
+#　　　　　　２．データの保存・読込
+########################################
+def saveData(request):
+    temp_name = "save.html"
+    page = 'saveData'
+    row = PagesTexts[PagesTexts['page'] == page]
+    title = [item for item in row['title']][0]
+    headings = [str(item[4]) for item in row.itertuples()]
+    texts = [str(item[5]) for item in row.itertuples()]
+
+    # キー文字列(英数字6文字)の生成
+    key = get_random_string(6)
+
+    #セッションデータの読込
+    if request.session['yourCharData'] ==[]:
+        texts[0] = "入力データが存在しません。まずは生徒の育成から始めましょう！"
+    else:
+        headings += ['入力データ']
+        texts += [request.session['yourCharData']]
+
+    save = request.session['yourCharData']
+
+    context = {
+    'pagetitle':title,
+    'txts':zip(headings, texts),
+    }
+    return render(request,temp_name,context)
 
 
+
+def loadData(request):
+    pass
+
 ########################################
-#　　　　　　テキスト表示ページ
+#　　　　　　３．テキスト表示ページ
 ########################################
-# ４．使い方・概要ページ
+# １．使い方・概要ページ
 def howto(request):
     temp_name = "contents.html"
     page = 'howto'
@@ -256,11 +289,10 @@ def howto(request):
     context = {
     'pagetitle':title,
     'txts':zip(headings, texts),
-    'guide_msg':'',
     }
     return render(request,temp_name,context)
 
-# ５．その他説明ページ
+# ２．その他説明ページ
 def about(request):
     temp_name = "contents.html"
     page = 'about'
@@ -272,11 +304,10 @@ def about(request):
     context = {
     'pagetitle':title,
     'txts':zip(headings, texts),
-    'guide_msg':'',
     }
     return render(request,temp_name,context)
 
-# ６．プライバシーポリシー
+# ３．プライバシーポリシー
 def privacypolicy(request):
     temp_name = "contents.html"
     page = 'privacypolicy'
@@ -288,7 +319,6 @@ def privacypolicy(request):
     context = {
     'pagetitle':title,
     'txts':zip(headings, texts),
-    'guide_msg':'',
     }
-    
+
     return render(request,temp_name,context)

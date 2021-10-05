@@ -1,42 +1,34 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<form action="input" method="get" >
-<div class="container">
-  <div class="boxes-container">
-  <h2 class="heading">ブルアカ育成マスター</h2>
 <p>{{msg}}</p>
-{% for headings, texts in txts %}
-  <div class="boxArea">
-  <h3 class="heading">{{ headings }}</h3>
-    <div class="boxAreaWrap">
-      <p class="texts">{{ texts | safe }}</p>
-    </div>
-  </div>
-{% endfor %}
-    <div class="boxArea chars">
-    <h3 class="heading">生徒一覧</h3>
-      <div class="boxAreaWrap">
-      {% for charId, charName in chars %}
-      <div class="charBox">
-        <div class="charBoxwrap">
-          <label>
-          <input type="checkbox" name="char" class="charCheckBox" value="{{ charId }}">
-          <div class="forchk">選択中
-          </div>
-          <img src = "{% static 'stuIcons/stuIcon_' %}{{ charId }}.png">
 
-          <!-- <img src = "../../static/stuIcons/stuIcon_{{ charId }}.png"> -->
-          <p class="charNameBar">{{ charName }}</p>
-          </label>
-        </div>
-      </div>
+{% include 'content.html' %}
 
-      {% endfor %}
-      </div>
-    </div>
+<form action="input" method="get" >
+  <div class="boxArea chars">
+  <h3 class="heading">生徒一覧</h3>
+  <div class="boxAreaWrap">
+  {% for charId, charName in chars %}
+  <div class="charBox">
+  <div class="charBoxwrap">
+  <label>
+  <input type="checkbox" name="char" class="charCheckBox" value="{{ charId }}">
+  <div class="forchk">選択中
   </div>
-</div>
-<input type="submit" class="Btn guide blue" value="次へ">
+  <img src = "{% static 'stuIcons/stuIcon_' %}{{ charId }}.png">
+
+  <!-- <img src = "../../static/stuIcons/stuIcon_{{ charId }}.png"> -->
+  <p class="charNameBar">{{ charName }}</p>
+  </label>
+  </div>
+  </div>
+
+  {% endfor %}
+  </div>
+  </div>
+
+<div class="btnWrap">
+<input type="submit" class="Btn  blue" value="次へ"></div>
 </form>
 {% endblock %}

@@ -33,15 +33,14 @@
     <p class="copy">育成素材を一括計算</p>
   </div>
 </div>
-{% block content %}{% endblock %}
 
-{% if guide_msg != "" %}
-<div class="guidespace"></div>
-<div class="guidemsg">
-  <h4>Guide</h4>
-  <p>{{ guide_msg | linebreaksbr }}</p>
+<div class="container">
+<div class="boxes-container">
+  <h2 class="heading">{{ pagetitle }}</h2>
+
+{% block content %}{% endblock %}
 </div>
-{% endif %}
+</div>
 
 <label for="menuOnOff">
   <span class="menubtn">

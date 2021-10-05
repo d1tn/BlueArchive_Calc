@@ -170,6 +170,7 @@ def runCalc(stuNo, stuLv_from, eq1Lv_from, eq2Lv_from, eq3Lv_from, exLv_from, ns
 def IntToStr(array):
     for i in range(len(array)):
         for j in range(len(array[i])):
+            # 最初と最後の行（生徒IDと計算対象チェック）以外の値が0の場合、空白文字として格納
             if j != 0 and j!= 17:
                 if array[i][j] == 0:
                     array[i][j] = ''
@@ -182,7 +183,6 @@ def StrToInt(array):
             if array[i][j] == '':
                 array[i][j] = 0
             array[i][j] = int(array[i][j])
-
 
 #18 x n の入力クエリを n行18列に変換する
 #クエリから文字列として受け取った数値を指定幅に切り分けて多次元配列化する
@@ -205,7 +205,6 @@ def InputToArray(input):
             array.append(lst)
     return array,err
 
-
 # 最大値・最小値チェック
 def ValidateInMinToMax(stuNo, stuLv_from, eq1Lv_from, eq2Lv_from, eq3Lv_from, exLv_from, nsLv_from, psLv_from, ssLv_from, stuLv_to, eq1Lv_to, eq2Lv_to, eq3Lv_to, exLv_to, nsLv_to, psLv_to, ssLv_to, DoOrNot):
     if DoOrNot == 1 :
@@ -219,3 +218,33 @@ def ValidateInMinToMax(stuNo, stuLv_from, eq1Lv_from, eq2Lv_from, eq3Lv_from, ex
     else:
         pass
         # print('StuId',stuNo,": min_to_max validation skipped")
+
+##########################################################
+# 以下、sqliteのデータ処理専用
+##########################################################
+# 多次元配列 => 文字列への変換([[1,2,3],[4,5,6]] => '1,2,3,4,5,6')
+def ArrayToStr(array):
+    str1 = ''
+    for i in array:
+        for j in i:
+            str1 +=str(j)+','
+    return str1[:-1]
+
+# 文字列 => 多次元配列への変換('1,2,3,4,5,6' => [[1,2,3],[4,5,6]])
+def StrToArray(string):
+    arr1 = [int(i) for i in string.split(',')]
+    arr2 = []
+    for i in range(int(len(arr1)/col)):
+        arr2.append([i*col + j for j in range(col)])
+    return arr2
+
+#データと紐づけるためのキー文字列の生成（アルファベット大文字・小文字のみ）
+import random, string
+def get_random_string(length):
+    letters = string.ascii_letters
+    result_str = ''.join(random.choice(letters) for i in range(length))
+    return result_str
+
+##########################################################
+# 以上、sqliteのデータ処理専用
+##########################################################
