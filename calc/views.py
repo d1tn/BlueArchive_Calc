@@ -129,7 +129,7 @@ def result(request):
     context = {
     'pagetitle':title,
     }
-    
+
 
     # クエリを多次元配列の形に変換
     inputs,msg = InputToArray(input)
@@ -302,7 +302,7 @@ def saveConfirm(request):
         }
         return render(request,temp_name,context)
 
-def saveData(request):
+def saved(request):
     temp_name = "save.html"
     page = 'saveData'
     row = PagesTexts[PagesTexts['page'] == page]
