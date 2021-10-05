@@ -177,6 +177,14 @@ def IntToStr(array):
                     array[i][j] = ''
             array[i][j] = str(array[i][j])
 
+# 数字or空白のみの多次元配列を数値型=>文字列型に変換
+# DB保存用のため空白には直さない
+def IntToStrKeepZero(array):
+    for i in range(len(array)):
+        for j in range(len(array[i])):
+            array[i][j] = str(array[i][j])
+
+
 # 数字のみの多次元配列を文字列型=>数値型に変換
 def StrToInt(array):
     for i in range(len(array)):

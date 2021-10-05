@@ -6,6 +6,10 @@
 {% include 'content.html' %}
 
 <a href="../" class="Btn  blue">トップへ戻る</a>
+
+{% if inputData != "none" %}
 <input type="submit" class="Btn yellow" value="読込">
+{% endif %}
+
 </form>
 {% endblock %}

@@ -57,6 +57,7 @@ def input(request):
     headings = [str(item[5]) for item in row.itertuples()]
     texts = [str(item[6]) for item in row.itertuples()]
 
+    request.session['yourCharData'] =[]
 
     # 入力済みデータが存在する場合はそちらから読み込む
     try:
@@ -292,7 +293,7 @@ def saveConfirm(request):
         # # セッション変数を更新
         # request.session['inputs'] = inputs
         #テンプレートに投げる為に一時的に文字列に変換
-        IntToStr(charInputs)
+        IntToStrKeepZero(charInputs)
         # print('charInputs:',charInputs)
         submit_token = set_submit_token(request)
 
@@ -361,12 +362,12 @@ def loadData(request):
     headings = [str(item[5]) for item in row.itertuples()]
     texts = [str(item[6]) for item in row.itertuples()]
 
-    texts[0] += '<br><input type="text" name="load" maxlength="10" required="required">'
+    texts[0] += '<br><input type="text" name="loadKey" maxlength="10" required="required">'
 
     context = {
     'pagetitle':title,
     'txts':zip(headings, texts, classes),
-    'inputData':'none',
+    'inputData':'yes',
     }
     return render(request,temp_name,context)
 
@@ -379,17 +380,25 @@ def loaded(request):
     classes = [str(item[4]) for item in row.itertuples()]
     headings = [str(item[5]) for item in row.itertuples()]
     texts = [str(item[6]) for item in row.itertuples()]
+    loadKey = request.POST.get('loadKey')
+    print(loadKey)
+    try:
+        # キー文字列(英数字6文字)の生成
+        intoDB = InputData.objects.get(authKeys=loadKey)
+        input = intoDB.inputs
+        print(input,':読込OK')
+        print(input)
+    except IntegrityError:
+        print(key,':重複データ有り。再抽選')
+    else:
+        request.session['yourCharData'] = StrToArray(input)
 
-    loadKey = request.POST.getlist('loadKey')
-
-    texts[0] += '<br><input type="text" name="loadKey" maxlength="10" required="required">'
-
-    context = {
-    'pagetitle':title,
-    'txts':zip(headings, texts, classes),
-    'inputData':'none',
-    }
-    return render(request,temp_name,context)
+        context = {
+        'pagetitle':title,
+        'txts':zip(headings, texts, classes),
+        'inputData':'none',
+        }
+        return render(request,temp_name,context)
 
 
 ########################################
