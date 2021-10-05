@@ -19,8 +19,8 @@ def charchoise(request):
     page = 'top'
     row = PagesTexts[PagesTexts['page'] == page]
     title = [item for item in row['title']][0]
-    headings = [str(item[4]) for item in row.itertuples()]
-    classes = [str(item[5]) for item in row.itertuples()]
+    classes = [str(item[4]) for item in row.itertuples()]
+    headings = [str(item[5]) for item in row.itertuples()]
     texts = [str(item[6]) for item in row.itertuples()]
 
     temp_name = "charchoise.html"
@@ -51,8 +51,8 @@ def input(request):
     page = 'input'
     row = PagesTexts[PagesTexts['page'] == page]
     title = [item for item in row['title']][0]
-    headings = [str(item[4]) for item in row.itertuples()]
-    classes = [str(item[5]) for item in row.itertuples()]
+    classes = [str(item[4]) for item in row.itertuples()]
+    headings = [str(item[5]) for item in row.itertuples()]
     texts = [str(item[6]) for item in row.itertuples()]
 
 
@@ -251,8 +251,8 @@ def saveConfirm(request):
     page = 'saveConfirm'
     row = PagesTexts[PagesTexts['page'] == page]
     title = [item for item in row['title']][0]
-    headings = [str(item[4]) for item in row.itertuples()]
-    classes = [str(item[5]) for item in row.itertuples()]
+    classes = [str(item[4]) for item in row.itertuples()]
+    headings = [str(item[5]) for item in row.itertuples()]
     texts = [str(item[6]) for item in row.itertuples()]
 
     #セッションデータの読込
@@ -314,8 +314,8 @@ def saved(request):
     page = 'saved'
     row = PagesTexts[PagesTexts['page'] == page]
     title = [item for item in row['title']][0]
-    headings = [str(item[4]) for item in row.itertuples()]
-    classes = [str(item[5]) for item in row.itertuples()]
+    classes = [str(item[4]) for item in row.itertuples()]
+    headings = [str(item[5]) for item in row.itertuples()]
     texts = [str(item[6]) for item in row.itertuples()]
     input = request.POST.getlist('input', None)
 
@@ -345,8 +345,8 @@ def howto(request):
     page = 'howto'
     row = PagesTexts[PagesTexts['page'] == page]
     title = [item for item in row['title']][0]
-    headings = [str(item[4]) for item in row.itertuples()]
-    classes = [str(item[5]) for item in row.itertuples()]
+    classes = [str(item[4]) for item in row.itertuples()]
+    headings = [str(item[5]) for item in row.itertuples()]
     texts = [str(item[6]) for item in row.itertuples()]
 
     context = {
@@ -362,8 +362,8 @@ def about(request):
     page = 'about'
     row = PagesTexts[PagesTexts['page'] == page]
     title = [item for item in row['title']][0]
-    headings = [str(item[4]) for item in row.itertuples()]
-    classes = [str(item[5]) for item in row.itertuples()]
+    classes = [str(item[4]) for item in row.itertuples()]
+    headings = [str(item[5]) for item in row.itertuples()]
     texts = [str(item[6]) for item in row.itertuples()]
 
     context = {
@@ -379,8 +379,8 @@ def privacypolicy(request):
     page = 'privacypolicy'
     row = PagesTexts[PagesTexts['page'] == page]
     title = [item for item in row['title']][0]
-    headings = [str(item[4]) for item in row.itertuples()]
-    classes = [str(item[5]) for item in row.itertuples()]
+    classes = [str(item[4]) for item in row.itertuples()]
+    headings = [str(item[5]) for item in row.itertuples()]
     texts = [str(item[6]) for item in row.itertuples()]
 
     context = {
