@@ -9,10 +9,9 @@ from commons.readcsv import *
 from commons.calcFunc import *
 from .forms import *
 import copy
-#sqlite
-from .models import InputData
-from django.db import IntegrityError
-import socket
+from .models import InputData #sqlite
+from django.db import IntegrityError #キー重複時
+import socket # IP表示用
 
 ########################################
 #　　　　　　１．計算ページ
@@ -260,7 +259,6 @@ def saveConfirm(request):
     #セッションデータの読込
     if request.session['yourCharData'] ==[]:
         texts[0] = "入力データが存在しません。まずは生徒の育成から始めましょう！"
-
         context = {
         'pagetitle':title,
         'txts':zip(headings, texts, classes),
@@ -296,12 +294,14 @@ def saveConfirm(request):
         #テンプレートに投げる為に一時的に文字列に変換
         IntToStr(charInputs)
         # print('charInputs:',charInputs)
+        submit_token = set_submit_token(request)
 
         ths = ['キャラ','装備1','装備2','装備3','EXスキル','ノーマルスキル','パッシブスキル','サブスキル']
         context = {
         'pagetitle':title,
         'txts':zip(headings, texts, classes),
         'ths':ths,
+        'submit_token':submit_token,
         'charDatas': zip(charInputs,charNames),
         'inputData':inputData,
         #プルダウン用リストをreadcsv.pyから取得
@@ -319,13 +319,9 @@ def saved(request):
     texts = [str(item[6]) for item in row.itertuples()]
     input = request.POST.getlist('inputData', None)
 
-    headings += ['認証キー']
-    classes += ['ninsho']
-    # キー文字列(英数字6文字)の生成
-    key = get_random_string(8)
-    texts += ['<span>'+key+'</span>']
-
     try:
+        # キー文字列(英数字6文字)の生成
+        key = get_random_string(8)
         intoDB = InputData(authKeys='GleLpynz')
         intoDB.inputs = input[0]
         host = socket.gethostname()
@@ -336,14 +332,16 @@ def saved(request):
         classes[0] = 'error'
         texts[0] = 'データ重複'
     else:
-        request.POST.getlist('inputData', None) = ''
-    finally:
-        context = {
-        'pagetitle':title,
-        'txts':zip(headings, texts, classes),
-        'inputData':'none',
-        }
-        return render(request,temp_name,context)
+        headings += ['認証キー']
+        classes += ['ninsho']
+        texts += ['<span>'+key+'</span>']
+
+    context = {
+    'pagetitle':title,
+    'txts':zip(headings, texts, classes),
+    'inputData':'none',
+    }
+    return render(request,temp_name,context)
 
 
 def loadData(request):
