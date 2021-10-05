@@ -120,7 +120,9 @@ table.input th font *
 .boxArea.ninsho p span{
   margin: auto;
   background-color: #ffdddd;
-  padding: 0.5rem 1.0rem;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 0.5rem 1.2rem;
   font-size: 1.2rem;
   line-height: 1.8rem;
 }
