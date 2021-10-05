@@ -129,6 +129,7 @@ def result(request):
     context = {
     'pagetitle':title,
     }
+    
 
     # クエリを多次元配列の形に変換
     inputs,msg = InputToArray(input)
