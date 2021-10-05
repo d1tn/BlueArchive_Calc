@@ -269,5 +269,4 @@ def exist_submit_token(request):
         return False
     if not token_in_session:
         return False
-
     return token_in_request == token_in_session
