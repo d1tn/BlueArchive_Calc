@@ -319,28 +319,29 @@ def saved(request):
     texts = [str(item[6]) for item in row.itertuples()]
     input = request.POST.getlist('inputData', None)
 
+
     if exist_submit_token(request):
-        try:
-            # キー文字列(英数字6文字)の生成
-            key = get_random_string(8)
-            intoDB = InputData(authKeys='GleLpynz')
-            intoDB.inputs = input[0]
-            host = socket.gethostname()
-            intoDB.host = host
-            intoDB.ip = socket.gethostbyname(host)
-            intoDB.save()
-        except IntegrityError:
-            classes[0] = 'error'
-            texts[0] = 'データ重複'
-        else:
-            headings += ['認証キー']
-            classes += ['ninsho']
-            texts += ['<span>'+key+'</span>']
+        num = 0
+        while num < 1:
+            try:
+                # キー文字列(英数字6文字)の生成
+                key = get_random_string(8)
+                intoDB = InputData(authKeys=key)
+                intoDB.inputs = input[0]
+                host = socket.gethostname()
+                intoDB.host = host
+                intoDB.ip = socket.gethostbyname(host)
+                intoDB.save()
+                num += 1
+            except IntegrityError:
+                print(key,':重複データ有り。再抽選')
+            else:
+                headings += ['認証キー']
+                classes += ['ninsho']
+                texts += ['<span>'+key+'</span>']
     else:
         classes[0] = 'error'
-        texts[0] = '多重送信が行われました。'
-
-
+        texts[0] = 'データが二重に送信されました。<br>お手数ですが再度保存し直してください。'
 
     context = {
     'pagetitle':title,
