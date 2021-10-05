@@ -323,9 +323,9 @@ def saved(request):
     # キー文字列(英数字6文字)の生成
     key = get_random_string(8)
     texts += ['<span>'+key+'</span>']
-
     intoDB = InputData(authKeys=key)
     intoDB.inputs = input[0]
+    intoDB.ip = socket.gethostbyname(host)
     intoDB.save()
 
     context = {
