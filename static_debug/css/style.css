@@ -116,13 +116,14 @@ table.input th font *
 /* 認証キー装飾 */
 .boxArea.ninsho p{
   text-align: center;
-  padding: 0.5rem 1.0rem;
-  font-size: 2.0rem;
-  line-height: 2.4rem;
+}
+.boxArea.ninsho p span{
   margin: auto;
   background-color: #ffdddd;
+  padding: 0.5rem 1.0rem;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
 }
-
 
 .boxAreaWrap a{
   text-decoration: underline;
@@ -187,7 +188,6 @@ label{
   transition: 0.1s linear;
 }
 
-
 .charCheckBox:checked + .forchk{
   color: #FFF;
   visibility: visible;
@@ -200,8 +200,6 @@ label{
   width:100%;
   min-width: 50px;
 }
-
-
 
 /* アイテムリスト */
 .itemBox{
@@ -414,7 +412,6 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .menu li a{
   display: block;
-
   padding: 1.0rem;
   transition: 0.1s;
 }
@@ -422,7 +419,6 @@ input[type="number"]::-webkit-outer-spin-button {
 .menu li:nth-child(1){
   border-top: none;
 }
-
 
 .menu li:hover>a,
 .menu li:hover>a>i{
@@ -460,8 +456,6 @@ input[type="number"]::-webkit-outer-spin-button {
 .menubtn:active{
   transform: scale(0.9,0.9);
 }
-
-
 
 
 @media screen and (min-width:481px) {
@@ -533,6 +527,14 @@ table .Eqs select{
     right:1.0rem;;
     font-size: 1.0rem;
   }
+
+  /* 認証キー装飾 */
+  .boxArea.ninsho p span{
+    padding: 0.5rem 1.0rem;
+    font-size: 2.0rem;
+    line-height: 2.4rem;
+  }
+
 
 }
 
