@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
+<form action="" method="POST">
+{% csrf_token%}
 
 {% include 'content.html' %}
-{% if inputData != "none" %}
-  {% include 'chartbl_static.html' %}
-{% endif %}
 
 <a href="../" class="Btn  blue">トップへ戻る</a>
+<input type="submit" class="Btn yellow" value="読込">
+</form>
+
 
 {% endblock %}
