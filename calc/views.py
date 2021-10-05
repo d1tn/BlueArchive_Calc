@@ -325,6 +325,7 @@ def saved(request):
     texts += ['<span>'+key+'</span>']
     intoDB = InputData(authKeys=key)
     intoDB.inputs = input[0]
+    host = socket.gethostname()
     intoDB.ip = socket.gethostbyname(host)
     intoDB.save()
 
