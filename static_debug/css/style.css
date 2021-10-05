@@ -114,6 +114,10 @@ table.input th font *
   line-height: 1.5rem;
 }
 
+.boxAreaWrap a{
+  text-decoration: underline;
+}
+
 /* エラーメッセージ用 */
 .boxArea.error{
   background-color: #ffdddd;
@@ -127,8 +131,6 @@ table.input th font *
 .boxArea.error .texts{
   color: #86000B;
 }
-
-
 
 /* 認証キー装飾 */
 .boxArea.ninsho p{
@@ -145,8 +147,14 @@ table.input th font *
   color: #86000B;
 }
 
-.boxAreaWrap a{
-  text-decoration: underline;
+/* 認証キー読込ページ */
+.boxArea.loadKey input{
+  border: 1px solid #ddd;
+  text-align: center;
+  height: 1.8rem;
+  border-radius: 3px;
+  padding: 0.2rem 0.4rem;
+  font-size: 1.2rem;
 }
 
 .charBox{
