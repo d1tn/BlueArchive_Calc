@@ -41,8 +41,6 @@ studentsList = []
 stuIds_and_Names = stuData.loc[:,['Stu_Id','Stu_Name']]
 stuIds_and_Names = stuIds_and_Names.sort_values('Stu_Name', ascending=True)
 studentsList = stuIds_and_Names.values.tolist()
-for i in studentsList:
-    print(i)
 
 # プルダウン用リスト
 eqLv_Lista = eqLv["CurrentLv"][:].dropna().apply(lambda x: str(int(x)))
