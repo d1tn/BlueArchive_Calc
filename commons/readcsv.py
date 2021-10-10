@@ -36,18 +36,11 @@ sklLv = pd.DataFrame(pd.read_csv(csvFolder + "Exp/04_SkillLv.csv", encoding="utf
 
 
 ###入力フォーム用数値作成
-#キャラIDリスト、キャラ名リスト
-charId = []
-charName = []
-with open("static/csv/Main/00_Students_Data.csv", encoding="utf-8") as f:
-    reader = csv.reader(f)
-    #ヘッダーを読み飛ばす
-    header = next(reader)
-    for row in reader:
-        charId.append(int(row[0]))
-        charName.append(row[1])
-# print('charId:',charId,' ,charName:',charName)
-
+#キャラIDリスト、キャラ名リスト(五十音順の表示用)
+studentsList = []
+stuIds_and_Names = stuData.loc[:,['Stu_Id','Stu_Name']]
+stuIds_and_Names = stuIds_and_Names.sort_values('Stu_Name', ascending=True)
+studentsList = stuIds_and_Names.values.tolist()
 
 # プルダウン用リスト
 eqLv_Lista = eqLv["CurrentLv"][:].dropna().apply(lambda x: str(int(x)))
@@ -55,18 +48,19 @@ eqLv_Listb = eqLv["CurrentLv_text"][:].dropna()
 eqLv_List =[]
 for i ,j in zip(eqLv_Lista, eqLv_Listb):
     eqLv_List.append([i, j])
-# eqLv_List = eqLv_List.to_numpy().tolist()
 
-# 最大値・最小値
-# キャラID（必ずしも連続性があるとは限らないためリスト型として格納）
+# キャラIDリスト（必ずしも連続性があるとは限らないためリスト型として格納）
+# 範囲外のIdを削除するために使用
 stuIds = []
 for i in stuData['Stu_Id'][:].dropna().astype('int'):
     stuIds.append(int(i))
+
+# 最大値・最小値
 # キャラLv
-# 最大値
+# 最小値
 charLv_min = charLv["CurrentLv"].min().astype('int')
 # charLv_max = charLv["CurrentLv"].max()
-# 最小値
+# 最大値
 charLv_max = 73
 
 # 装備Lv
@@ -90,3 +84,11 @@ sklLv_max = sklLv["CurrentLv"].max().astype('int')
 #　　　テキストデータ読み込み
 #######################################
 PagesTexts = pd.DataFrame(pd.read_csv(csvFolder + "Texts/00_Contents.csv", encoding="utf-8"))
+
+def getTextsFromCsv(pagename):
+    row = PagesTexts[PagesTexts['page'] == pagename]
+    title = [item for item in row['title']][0]
+    classes = [str(item[4]) for item in row.itertuples()]
+    headings = [str(item[5]) for item in row.itertuples()]
+    texts = [str(item[6]) for item in row.itertuples()]
+    return title, classes, headings, texts

@@ -7,36 +7,36 @@
   <th colspan="2">キャラ名</th>
   {% for th in ths %}<th colspan="1">{{ th }}Lv</th>
   {% endfor %}</tr>
-  {% for charInputs, charNames in charDatas %}
+  {% for stuInput, stuName in stuDatas %}
   <tr class="trTop">
     <td rowspan="2">
       <div class="charBoxwrap">
-      <input type="hidden" name="input" value="{{ charInputs.0 }}"/>
-      <img src = "{% static 'stuIcons/stuIcon_' %}{{ charInputs.0 }}.png">
-      <p class="charNameBar">{{ charNames }}</p>
+      <input type="hidden" name="input" value="{{ stuInput.0 }}"/>
+      <img src = "{% static 'stuIcons/stuIcon_' %}{{ stuInput.0 }}.png">
+      <p class="charNameBar">{{ stuName }}</p>
       </div>
     </td>
 
     <td>現在</td>
-    <td class="inputTd">{{ charInputs.1 }}</td>
-    <td class="inputTd">{% for i in eqLv_List %}{% if i.0 == charInputs.2 %} {{ i.1 }} {% endif %}{% endfor %}</td>
-    <td class="inputTd">{% for i in eqLv_List %}{% if i.0 == charInputs.3 %} {{ i.1 }} {% endif %}{% endfor %}</td>
-    <td class="inputTd">{% for i in eqLv_List %}{% if i.0 == charInputs.4 %} {{ i.1 }} {% endif %}{% endfor %}</td>
-    <td class="inputTd">{{ charInputs.5 }}</td>
-    <td class="inputTd">{{ charInputs.6 }}</td>
-    <td class="inputTd">{{ charInputs.7 }}</td>
-    <td class="inputTd">{{ charInputs.8 }}</td>
+    <td class="inputTd">{{ stuInput.1 }}</td>
+    <td class="inputTd">{% for i in eqLv_List %}{% if i.0 == stuInput.2 %} {{ i.1 }} {% endif %}{% endfor %}</td>
+    <td class="inputTd">{% for i in eqLv_List %}{% if i.0 == stuInput.3 %} {{ i.1 }} {% endif %}{% endfor %}</td>
+    <td class="inputTd">{% for i in eqLv_List %}{% if i.0 == stuInput.4 %} {{ i.1 }} {% endif %}{% endfor %}</td>
+    <td class="inputTd">{{ stuInput.5 }}</td>
+    <td class="inputTd">{{ stuInput.6 }}</td>
+    <td class="inputTd">{{ stuInput.7 }}</td>
+    <td class="inputTd">{{ stuInput.8 }}</td>
   </tr>
   <tr class="trBtm">
     <td>目標</td>
-    <td class="inputTd">{{ charInputs.9 }}</td>
-    <td class="inputTd">{% for i in eqLv_List %}{% if i.0 == charInputs.10 %} {{ i.1 }} {% endif %}{% endfor %}</td>
-    <td class="inputTd">{% for i in eqLv_List %}{% if i.0 == charInputs.11 %} {{ i.1 }} {% endif %}{% endfor %}</td>
-    <td class="inputTd">{% for i in eqLv_List %}{% if i.0 == charInputs.12 %} {{ i.1 }} {% endif %}{% endfor %}</td>
-    <td class="inputTd">{{ charInputs.13 }}</td>
-    <td class="inputTd">{{ charInputs.14 }}</td>
-    <td class="inputTd">{{ charInputs.15 }}</td>
-    <td class="inputTd">{{ charInputs.16 }}</td>
+    <td class="inputTd">{{ stuInput.9 }}</td>
+    <td class="inputTd">{% for i in eqLv_List %}{% if i.0 == stuInput.10 %} {{ i.1 }} {% endif %}{% endfor %}</td>
+    <td class="inputTd">{% for i in eqLv_List %}{% if i.0 == stuInput.11 %} {{ i.1 }} {% endif %}{% endfor %}</td>
+    <td class="inputTd">{% for i in eqLv_List %}{% if i.0 == stuInput.12 %} {{ i.1 }} {% endif %}{% endfor %}</td>
+    <td class="inputTd">{{ stuInput.13 }}</td>
+    <td class="inputTd">{{ stuInput.14 }}</td>
+    <td class="inputTd">{{ stuInput.15 }}</td>
+    <td class="inputTd">{{ stuInput.16 }}</td>
   </tr>
   {% endfor %}
 </table>

@@ -6,7 +6,7 @@
   <div class="boxArea chars result">
     <h3 class="heading">選択した生徒</h3>
     <div class="boxAreaWrap">
-  {% for stuId, stuName in chars %}
+  {% for stuId, stuName in students %}
   <div class="charBox chosenChars">
   <div class="charBoxwrap">
     <img src = "{% static 'stuIcons/stuIcon_' %}{{ stuId }}.png" alt="{{ itemName }}">

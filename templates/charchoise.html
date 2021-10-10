@@ -10,17 +10,16 @@
   <div class="boxArea chars">
   <h3 class="heading">生徒一覧</h3>
   <div class="boxAreaWrap">
-  {% for charId, charName in chars %}
+  {% for stuId, stuName in students %}
   <div class="charBox">
   <div class="charBoxwrap">
   <label>
-  <input type="checkbox" name="char" class="charCheckBox" value="{{ charId }}">
+  <input type="checkbox" name="char" class="charCheckBox" value="{{ stuId }}">
   <div class="forchk">選択中
   </div>
-  <img src = "{% static 'stuIcons/stuIcon_' %}{{ charId }}.png">
+  <img src = "{% static 'stuIcons/stuIcon_' %}{{ stuId }}.png">
 
-  <!-- <img src = "../../static/stuIcons/stuIcon_{{ charId }}.png"> -->
-  <p class="charNameBar">{{ charName }}</p>
+  <p class="charNameBar">{{ stuName }}</p>
   </label>
   </div>
   </div>

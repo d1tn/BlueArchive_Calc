@@ -36,21 +36,14 @@ def deleteSession(request):
 def charchoise(request):
     temp_name = "charchoise.html"
     page = 'top'
-    row = PagesTexts[PagesTexts['page'] == page]
-    title = [item for item in row['title']][0]
-    classes = [str(item[4]) for item in row.itertuples()]
-    headings = [str(item[5]) for item in row.itertuples()]
-    texts = [str(item[6]) for item in row.itertuples()]
-
-    temp_name = "charchoise.html"
+    title, classes, headings, texts = getTextsFromCsv(page)
 
     # 配列の生成
     inputs = []
     # 初期化方法
-    for i in charId:
+    for i in stuIds:
         #入力配列の初期設定（最後の1は計算するかどうか　0は計算しない）
         inputs.append([int(i),1,1,1,1,1,1,1,1,0,1,1,1,0,0,0,0,0])
-
 
     # 生成した初期値をセッション変数に格納
     request.session['inputs'] = inputs
@@ -58,7 +51,7 @@ def charchoise(request):
     context = {
     'pagetitle':title,
     'txts':zip(headings, texts, classes),
-    'chars' : zip(charId,charName),
+    'students' : studentsList,
     }
     return render(request,temp_name,context)
 
@@ -67,11 +60,7 @@ def input(request):
     # print('\n\n▼ Input Page ▼')
     temp_name = "input.html"
     page = 'input'
-    row = PagesTexts[PagesTexts['page'] == page]
-    title = [item for item in row['title']][0]
-    classes = [str(item[4]) for item in row.itertuples()]
-    headings = [str(item[5]) for item in row.itertuples()]
-    texts = [str(item[6]) for item in row.itertuples()]
+    title, classes, headings, texts = getTextsFromCsv(page)
 
     # 入力済みデータが存在する場合はそちらから読み込む
     try:
@@ -95,41 +84,38 @@ def input(request):
     StrToInt(inputs)
 
     #入力済みデータにいないキャラが追加されていた場合は初期値を追加
-    for i in range(len(charId)):
-        if charId[i] not in [input[0] for input in inputs]:
-            # print('New stuID:',charId[i])
-            inputs.append([int(charId[i]),1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0])
-
+    for i in range(len(stuIds)):
+        if stuIds[i] not in [input[0] for input in inputs]:
+            # print('New stuID:',stuIds[i])
+            inputs.append([int(stuIds[i]),1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0])
 
     #対象キャラIDをリクエストから受取
-    charIds = request.POST.getlist('char', None)
-    charNames = []
+    stuIds_chosen = request.POST.getlist('char', None)
+    stuNames_chosen = []
     # 入力データの文字列変換用
-    charInputs = []
-    for i in range(len(inputs)):
-        for j in range(len(charIds)):
+    stuInputs = []
+    for i in range(len(stuIds_chosen)):
+        for j in range(len(inputs)):
             # チェックした生徒IDと初期配列0列目（キャラID）の比較
             # 一致している場合（チェックされている場合）のみ処理
-            if int(inputs[i][0]) == int(charIds[j]):
+            if int(inputs[j][0]) == int(stuIds_chosen[i]):
                 # 計算対象であるフラグを立てる
-                inputs[i][17] = 1
-                charInputs.append(inputs[i])
+                inputs[j][17] = 1
+                stuInputs.append(inputs[j])
             # 文字列変換用
             #クエリから来たキャラIDを元にキャラ名を検索
-            charNames.append(stuData.loc[stuData["Stu_Id"] == int(charIds[j])]["Stu_Name"].item())
-    # print('charInputs:',charInputs)
-    # # セッション変数を更新
-    # request.session['inputs'] = inputs
+        stuNames_chosen.append(stuData.loc[stuData["Stu_Id"] == int(stuIds_chosen[i])]["Stu_Name"].item())
+
     #テンプレートに投げる為に一時的に文字列に変換
-    IntToStr(charInputs)
-    # print('charInputs:',charInputs)
+    IntToStr(stuInputs)
+    # print('stuInputs:',stuInputs)
 
     ths = ['キャラ','装備1','装備2','装備3','EXスキル','ノーマルスキル','パッシブスキル','サブスキル']
     context = {
     'pagetitle':title,
     'txts':zip(headings, texts, classes),
     'ths':ths,
-    'charDatas' : zip(charInputs,charNames),
+    'stuDatas' : zip(stuInputs,stuNames_chosen),
     #プルダウン用リスト、最大値最小値等をreadcsv.pyから取得
     'eqLv_List':eqLv_List,
     'max_min':[[charLv_max,charLv_min], [exLv_max, exLv_min], [sklLv_max, sklLv_min]],
@@ -150,7 +136,6 @@ def result(request):
     'pagetitle':title,
     }
 
-
     # クエリを多次元配列の形に変換
     inputs,msg = InputToArray(input)
 
@@ -167,17 +152,16 @@ def result(request):
         # print('An error has occured : ',msg)
         return render(request,'input.html',
         {'msg':msg,
-        'input':input}
-        )
-
+        'input':input,
+        })
 
     # 選んだキャラIDとキャラ名
-    charIds = [id[0] for id in inputs]
-    charNames = []
+    stuIds_chosen = [id[0] for id in inputs]
+    stuNames_chosen = []
     # 入力データの文字列変換用
-    for i in range(len(charIds)):
-        charNames.append(stuData.loc[stuData["Stu_Id"] == int(charIds[i])]["Stu_Name"].item())
-    context['chars'] = zip(charIds, charNames)
+    for i in range(len(stuIds_chosen)):
+        stuNames_chosen.append(stuData.loc[stuData["Stu_Id"] == int(stuIds_chosen[i])]["Stu_Name"].item())
+    context['students'] = zip(stuIds_chosen,stuNames_chosen)
 
     # 入力値を元に計算
     res = []
@@ -216,7 +200,6 @@ def result(request):
     # 数値型に変換
     StrToInt(datas)
     StrToInt(inputs)
-
 
     if datas != []:
         for i in range(len(inputs)):
@@ -265,11 +248,7 @@ def result(request):
 def saveConfirm(request):
     temp_name = "save.html"
     page = 'saveConfirm'
-    row = PagesTexts[PagesTexts['page'] == page]
-    title = [item for item in row['title']][0]
-    classes = [str(item[4]) for item in row.itertuples()]
-    headings = [str(item[5]) for item in row.itertuples()]
-    texts = [str(item[6]) for item in row.itertuples()]
+    title, classes, headings, texts = getTextsFromCsv(page)
 
     #セッションデータの読込
     if request.session['yourCharData'] ==[]:
@@ -290,25 +269,24 @@ def saveConfirm(request):
         StrToInt(inputs)
 
         #入力済みデータにいないキャラが追加されていた場合は初期値を追加
-        for i in range(len(charId)):
-            if charId[i] not in [input[0] for input in inputs]:
-                # print('New stuID:',charId[i])
-                inputs.append([int(charId[i]),1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0])
+        for i in range(len(stuIds)):
+            if stuIds[i] not in [input[0] for input in inputs]:
+                # print('New stuID:',stuIds[i])
+                inputs.append([int(stuIds[i]),1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0])
 
-        charNames = []
+        stuNames = []
         # 入力データの文字列変換用
-        charInputs = []
-        for i in range(len(inputs)):
-            charInputs.append(inputs[i])
-            # 文字列変換用
+        stuInputs = []
+        for i in range(len(studentsList)):
+            for j in range(len(inputs)):
+                if int(inputs[j][0]) == int(studentsList[i][0]):
+                    stuInputs.append(inputs[j])
             #クエリから来たキャラIDを元にキャラ名を検索
-            charNames.append(stuData.loc[stuData["Stu_Id"] == int(inputs[i][0])]["Stu_Name"].item())
-        # print('charInputs:',charInputs)
-        # # セッション変数を更新
-        # request.session['inputs'] = inputs
+            stuNames.append(studentsList[i][1])
+
         #テンプレートに投げる為に一時的に文字列に変換
-        IntToStrKeepZero(charInputs)
-        # print('charInputs:',charInputs)
+        IntToStrKeepZero(stuInputs)
+        # print('stuInputs:',stuInputs)
         submit_token = set_submit_token(request)
 
         ths = ['キャラ','装備1','装備2','装備3','EXスキル','ノーマルスキル','パッシブスキル','サブスキル']
@@ -317,7 +295,7 @@ def saveConfirm(request):
         'txts':zip(headings, texts, classes),
         'ths':ths,
         'submit_token':submit_token,
-        'charDatas': zip(charInputs,charNames),
+        'stuDatas': zip(stuInputs,stuNames),
         'inputData':inputData,
         #プルダウン用リストをreadcsv.pyから取得
         'eqLv_List':eqLv_List,
@@ -327,11 +305,7 @@ def saveConfirm(request):
 def saved(request):
     temp_name = "save.html"
     page = 'saved'
-    row = PagesTexts[PagesTexts['page'] == page]
-    title = [item for item in row['title']][0]
-    classes = [str(item[4]) for item in row.itertuples()]
-    headings = [str(item[5]) for item in row.itertuples()]
-    texts = [str(item[6]) for item in row.itertuples()]
+    title, classes, headings, texts = getTextsFromCsv(page)
 
     input = request.POST.getlist('inputData', None)
 
@@ -369,11 +343,7 @@ def saved(request):
 def loadData(request):
     temp_name = "load.html"
     page = 'loadData'
-    row = PagesTexts[PagesTexts['page'] == page]
-    title = [item for item in row['title']][0]
-    classes = [str(item[4]) for item in row.itertuples()]
-    headings = [str(item[5]) for item in row.itertuples()]
-    texts = [str(item[6]) for item in row.itertuples()]
+    title, classes, headings, texts = getTextsFromCsv(page)
 
     texts[0] += '<br><input type="text" name="loadKey" maxlength="10" required="required">'
 
@@ -388,11 +358,8 @@ def loadData(request):
 def loaded(request):
     temp_name = "load.html"
     page = 'loaded'
-    row = PagesTexts[PagesTexts['page'] == page]
-    title = [item for item in row['title']][0]
-    classes = [str(item[4]) for item in row.itertuples()]
-    headings = [str(item[5]) for item in row.itertuples()]
-    texts = [str(item[6]) for item in row.itertuples()]
+    title, classes, headings, texts = getTextsFromCsv(page)
+
     loadKey = request.POST.get('loadKey')
     print(loadKey)
     try:
@@ -423,11 +390,7 @@ def loaded(request):
 def howto(request):
     temp_name = "contents.html"
     page = 'howto'
-    row = PagesTexts[PagesTexts['page'] == page]
-    title = [item for item in row['title']][0]
-    classes = [str(item[4]) for item in row.itertuples()]
-    headings = [str(item[5]) for item in row.itertuples()]
-    texts = [str(item[6]) for item in row.itertuples()]
+    title, classes, headings, texts = getTextsFromCsv(page)
 
     context = {
     'pagetitle':title,
@@ -439,11 +402,7 @@ def howto(request):
 def about(request):
     temp_name = "contents.html"
     page = 'about'
-    row = PagesTexts[PagesTexts['page'] == page]
-    title = [item for item in row['title']][0]
-    classes = [str(item[4]) for item in row.itertuples()]
-    headings = [str(item[5]) for item in row.itertuples()]
-    texts = [str(item[6]) for item in row.itertuples()]
+    title, classes, headings, texts = getTextsFromCsv(page)
 
     context = {
     'pagetitle':title,
@@ -455,11 +414,7 @@ def about(request):
 def privacypolicy(request):
     temp_name = "contents.html"
     page = 'privacypolicy'
-    row = PagesTexts[PagesTexts['page'] == page]
-    title = [item for item in row['title']][0]
-    classes = [str(item[4]) for item in row.itertuples()]
-    headings = [str(item[5]) for item in row.itertuples()]
-    texts = [str(item[6]) for item in row.itertuples()]
+    title, classes, headings, texts = getTextsFromCsv(page)
 
     context = {
     'pagetitle':title,
