@@ -38,8 +38,10 @@ sklLv = pd.DataFrame(pd.read_csv(csvFolder + "Exp/04_SkillLv.csv", encoding="utf
 ###入力フォーム用数値作成
 #キャラIDリスト、キャラ名リスト(五十音順の表示用)
 studentsList = []
-stuIds_and_Names = stuData.loc[:,['Stu_Id','Stu_Name']]
-stuIds_and_Names = stuIds_and_Names.sort_values('Stu_Name', ascending=True)
+stuIds_and_Names = stuData.loc[:,['Stu_Id','Stu_Name','Sort_Id']]
+#五十音順にソート
+stuIds_and_Names = stuIds_and_Names.sort_values('Sort_Id', ascending=True)
+stuIds_and_Names = stuIds_and_Names.loc[:,['Stu_Id','Stu_Name']]
 studentsList = stuIds_and_Names.values.tolist()
 
 # プルダウン用リスト
