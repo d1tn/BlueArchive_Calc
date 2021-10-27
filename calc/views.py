@@ -422,3 +422,8 @@ def privacypolicy(request):
     }
 
     return render(request,temp_name,context)
+
+# ９９．その他
+# ads.txt誘導用
+def ads(request):
+    return render(request, 'ads.txt')
