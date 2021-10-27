@@ -40,7 +40,7 @@ def getEqExpCredit(stuNo,eqNo,fromLv,toLv):
         res.append([stuNo, obj, itemId_T3, sum(eqLv[(eqLv["CurrentLv"] >= fromLv) & (eqLv["NextLv"] <= toLv)]["Bp_T3"].astype('int',errors='ignore'))])
         res.append([stuNo, obj, itemId_T4, sum(eqLv[(eqLv["CurrentLv"] >= fromLv) & (eqLv["NextLv"] <= toLv)]["Bp_T4"].astype('int',errors='ignore'))])
         res.append([stuNo, obj, itemId_T5, sum(eqLv[(eqLv["CurrentLv"] >= fromLv) & (eqLv["NextLv"] <= toLv)]["Bp_T5"].astype('int',errors='ignore'))])
-        res.append([stuNo, obj, itemId_T6, sum(eqLv[(eqLv["CurrentLv"] >= fromLv) & (eqLv["NextLv"] <= toLv)]["Bp_T5"].astype('int',errors='ignore'))])
+        res.append([stuNo, obj, itemId_T6, sum(eqLv[(eqLv["CurrentLv"] >= fromLv) & (eqLv["NextLv"] <= toLv)]["Bp_T6"].astype('int',errors='ignore'))])
     return res
 
 #EXレベル
