@@ -1,5 +1,7 @@
 # 概要
 Yostar提供のスマートフォン向けアプリゲーム『ブルーアーカイブ』のキャラクター育成支援ツール。
+- リンク: <https://bluearchive-calculator.com/>
+- ツイッターアカウント: [@BlueArchiveCalc](https://twitter.com/BlueArchiveCalc)
 
 # 使い方
 1. キャラクターを選択
