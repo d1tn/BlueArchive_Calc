@@ -3,8 +3,7 @@ from . import views
 
 handler500 = views.my_customized_server_error
 
-app = 'first_app'
-
+app = 'calc'
 urlpatterns = [
     path('', views.charchoise, name='charchoise'),
     path('input', views.input, name='input'),
@@ -16,4 +15,5 @@ urlpatterns = [
     path('about', views.about, name='about'),
     path('privacypolicy', views.privacypolicy, name='privacypolicy'),
     path('deleteSession', views.deleteSession, name='deleteSession'),
+    path('ads.txt', views.ads, name='ads'),
 ]
