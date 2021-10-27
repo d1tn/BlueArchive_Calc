@@ -411,8 +411,8 @@ input[type="number"]::-webkit-outer-spin-button {
   position: fixed;
   background-color: rgb(248, 250, 251);
   z-index:9;
-  /* メニューバーの初期位置 */
-  top: -18.5rem;
+  /* メニューバーの初期位置 リスト１つごとに3.0rem下げる*/
+  top: -21.5rem;
   right:-1rem;
   width: 100%;
   max-width: 15.0rem;
