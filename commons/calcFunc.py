@@ -33,12 +33,14 @@ def getEqExpCredit(stuNo,eqNo,fromLv,toLv):
         itemId_T3 = itemData[(itemData["EQTier"]== 3)&(itemData["EQId"]== (stuData[stuData["Stu_Id"]==stuNo][eqNo].item()))]["ItemId"].item()
         itemId_T4 = itemData[(itemData["EQTier"]== 4)&(itemData["EQId"]== (stuData[stuData["Stu_Id"]==stuNo][eqNo].item()))]["ItemId"].item()
         itemId_T5 = itemData[(itemData["EQTier"]== 5)&(itemData["EQId"]== (stuData[stuData["Stu_Id"]==stuNo][eqNo].item()))]["ItemId"].item()
+        itemId_T6 = itemData[(itemData["EQTier"]== 6)&(itemData["EQId"]== (stuData[stuData["Stu_Id"]==stuNo][eqNo].item()))]["ItemId"].item()
         res.append([stuNo, obj, 1, sum(eqLv[(eqLv["CurrentLv"] >= fromLv) & (eqLv["NextLv"] <= toLv)]["Exp"].astype('int',errors='ignore'))])
         res.append([stuNo, obj, 3, sum(eqLv[(eqLv["CurrentLv"] >= fromLv) & (eqLv["NextLv"] <= toLv)]["Credit"].astype('int',errors='ignore'))])
         res.append([stuNo, obj, itemId_T2, sum(eqLv[(eqLv["CurrentLv"] >= fromLv) & (eqLv["NextLv"] <= toLv)]["Bp_T2"].astype('int',errors='ignore'))])
         res.append([stuNo, obj, itemId_T3, sum(eqLv[(eqLv["CurrentLv"] >= fromLv) & (eqLv["NextLv"] <= toLv)]["Bp_T3"].astype('int',errors='ignore'))])
         res.append([stuNo, obj, itemId_T4, sum(eqLv[(eqLv["CurrentLv"] >= fromLv) & (eqLv["NextLv"] <= toLv)]["Bp_T4"].astype('int',errors='ignore'))])
         res.append([stuNo, obj, itemId_T5, sum(eqLv[(eqLv["CurrentLv"] >= fromLv) & (eqLv["NextLv"] <= toLv)]["Bp_T5"].astype('int',errors='ignore'))])
+        res.append([stuNo, obj, itemId_T6, sum(eqLv[(eqLv["CurrentLv"] >= fromLv) & (eqLv["NextLv"] <= toLv)]["Bp_T5"].astype('int',errors='ignore'))])
     return res
 
 #EXレベル
