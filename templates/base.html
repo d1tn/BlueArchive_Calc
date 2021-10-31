@@ -13,7 +13,6 @@
 {% endif %}
 <script src="https://kit.fontawesome.com/06fc159213.js" crossorigin="anonymous"></script>
 
-
 <title>{% if pagetitle != "" %}{{ pagetitle }} | {% endif %}ブルーアーカイブ（ブルアカ）育成マスター</title>
 
 <meta name="twitter:card" content="summary"/>
@@ -33,11 +32,11 @@
 </div>
 
 <div class="container">
-<div class="boxes-container">
-  <h2 class="heading">{{ pagetitle }}</h2>
+  <div class="boxes-container">
+    <h2 class="heading">{{ pagetitle }}</h2>
 
-{% block content %}{% endblock %}
-</div>
+  {% block content %}{% endblock %}
+  </div>
 </div>
 
 <label for="menuOnOff">
