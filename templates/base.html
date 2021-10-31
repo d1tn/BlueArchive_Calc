@@ -4,17 +4,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
+
+{% if GOOGLE_ANALYTICS_TRACKING_ID %}
+  {% include 'ga.html' %}
+{% endif %}
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9478551747929792" crossorigin="anonymous"></script>
+
 <meta name="description" content="スマホゲーム「ブルーアーカイブ（ブルアカ）」の育成素材を一括計算できる攻略支援ツールです。">
 <meta name="keywords" content="ブルーアーカイブ,ブルアカ,ブルアカ 攻略,ブルアカ  育成,ブルアカ 素材,ブルアカ 育成素材,ブルアカ 素材 計算">
 <link rel="icon" href="{% static 'imgs/favicon.ico' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-{% if GOOGLE_ANALYTICS_TRACKING_ID %}
-  {% include 'ga.html' %}
-{% endif %}
+
+<!-- Font Awesome -->
 <script src="https://kit.fontawesome.com/06fc159213.js" crossorigin="anonymous"></script>
 
 <title>{% if pagetitle != "" %}{{ pagetitle }} | {% endif %}ブルーアーカイブ（ブルアカ）育成マスター</title>
 
+<!-- Twitter Card -->
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:site" content="@BlueArchiveCalc" />
 <meta property="og:url" content="https://bluearchive-calculator.com/" />
