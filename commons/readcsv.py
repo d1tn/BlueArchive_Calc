@@ -33,7 +33,7 @@ charLv = pd.DataFrame(pd.read_csv(csvFolder + "Exp/01_CharLv.csv", encoding="utf
 eqLv = pd.DataFrame(pd.read_csv(csvFolder + "Exp/02_EqLv.csv", encoding="utf-8")).astype('int',errors='ignore')
 exLv = pd.DataFrame(pd.read_csv(csvFolder + "Exp/03_ExLv.csv", encoding="utf-8"))
 sklLv = pd.DataFrame(pd.read_csv(csvFolder + "Exp/04_SkillLv.csv", encoding="utf-8"))
-
+sklLv_Unique = pd.DataFrame(pd.read_csv(csvFolder + "Exp/05_SkillLv_Unique.csv", encoding="utf-8"))
 
 ###入力フォーム用数値作成
 #キャラIDリスト、キャラ名リスト(五十音順の表示用)
