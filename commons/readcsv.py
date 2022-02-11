@@ -63,7 +63,7 @@ for i in stuData['Stu_Id'][:].dropna().astype('int'):
 charLv_min = charLv["CurrentLv"].min().astype('int')
 # charLv_max = charLv["CurrentLv"].max()
 # 最大値
-charLv_max = 75
+charLv_max = 78
 
 # 装備Lv
 eqLv_min = eqLv["CurrentLv"].min().astype('int')
